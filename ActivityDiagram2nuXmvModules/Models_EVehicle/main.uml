@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cGe8QC2xEeunIrWJiW4dhw" name="main">
+  <packageImport xmi:id="_cHaJUC2xEeunIrWJiW4dhw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_d45VEC2xEeunIrWJiW4dhw" name="MainActivity" node="_jzJF8C2xEeunIrWJiW4dhw _lYkLoC2xEeunIrWJiW4dhw _AnOwsC9EEeuga4oeM-Ka6w _FtgG8C9EEeuga4oeM-Ka6w _LF69IC9EEeuga4oeM-Ka6w _f9H1gC9EEeuga4oeM-Ka6w _WjArgC9EEeuga4oeM-Ka6w">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lNHIcC9EEeuga4oeM-Ka6w" target="_LF69IC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lxyi0C9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_LF69IC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mVE2EC9EEeuga4oeM-Ka6w" target="_WjArgC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_m5w3gC9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_WjArgC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_nmcXUC9EEeuga4oeM-Ka6w" target="_f9H1gC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pHaa0C9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_f9H1gC9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qVA2YC9EEeuga4oeM-Ka6w" target="_lYkLoC2xEeunIrWJiW4dhw" source="_FtgG8C9EEeuga4oeM-Ka6w"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_rKH5cC9EEeuga4oeM-Ka6w" target="_AnOwsC9EEeuga4oeM-Ka6w" source="_jzJF8C2xEeunIrWJiW4dhw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_jzJF8C2xEeunIrWJiW4dhw" name="Initial" outgoing="_rKH5cC9EEeuga4oeM-Ka6w"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_lYkLoC2xEeunIrWJiW4dhw" name="FinalNode" incoming="_qVA2YC9EEeuga4oeM-Ka6w"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_AnOwsC9EEeuga4oeM-Ka6w" name="Fork" incoming="_rKH5cC9EEeuga4oeM-Ka6w" outgoing="_lNHIcC9EEeuga4oeM-Ka6w _mVE2EC9EEeuga4oeM-Ka6w _nmcXUC9EEeuga4oeM-Ka6w"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_FtgG8C9EEeuga4oeM-Ka6w" name="Join" incoming="_lxyi0C9EEeuga4oeM-Ka6w _m5w3gC9EEeuga4oeM-Ka6w _pHaa0C9EEeuga4oeM-Ka6w" outgoing="_qVA2YC9EEeuga4oeM-Ka6w"/>
+    <node xmi:type="uml:CallBehaviorAction" xmi:id="_LF69IC9EEeuga4oeM-Ka6w" name="Call_User_Process" incoming="_lNHIcC9EEeuga4oeM-Ka6w" outgoing="_lxyi0C9EEeuga4oeM-Ka6w">
+      <behavior xmi:type="uml:Activity" href="Process_charging_station.uml#_8xKNIC86EeuZGJ2ngK3buQ"/>
+    </node>
+    <node xmi:type="uml:CallBehaviorAction" xmi:id="_WjArgC9EEeuga4oeM-Ka6w" name="Call_Charging_Station_Process" incoming="_mVE2EC9EEeuga4oeM-Ka6w" outgoing="_m5w3gC9EEeuga4oeM-Ka6w">
+      <behavior xmi:type="uml:Activity" href="Process_charging_station.uml#_8BTpYC3NEeunIrWJiW4dhw"/>
+    </node>
+    <node xmi:type="uml:CallBehaviorAction" xmi:id="_f9H1gC9EEeuga4oeM-Ka6w" name="Call_Car_Process" incoming="_nmcXUC9EEeuga4oeM-Ka6w" outgoing="_pHaa0C9EEeuga4oeM-Ka6w">
+      <behavior xmi:type="uml:Activity" href="Process_charging_station.uml#_DE4AAC8REeu38d3zxHUFKw"/>
+    </node>
+  </packagedElement>
+  <profileApplication xmi:id="_tBF_0FyvEeuGANEPbvMd3Q">
+    <eAnnotations xmi:id="_tBF_0VyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg"/>
+    </eAnnotations>
+    <appliedProfile href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>

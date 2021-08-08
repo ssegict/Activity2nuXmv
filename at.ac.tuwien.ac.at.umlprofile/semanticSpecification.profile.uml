@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Profile xmi:id="_0" name="semanticSepcification" URI="http://at.ac.tuwien.ict.semantic.profile" metaclassReference="_elementImport.1 _elementImport.7 _elementImport.9">
+    <eAnnotations xmi:id="_y4qCIP1gEeiKu-1MYEhRnQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_yRphQFvwEeu02utovL8vPg" name="semanticSepcification" nsURI="http://at.ac.tuwien.ict.semantic.profile" nsPrefix="semanticSepcification">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphQVvwEeu02utovL8vPg" name="ControlFlowWithConstraint">
+          <eAnnotations xmi:id="_yRphQlvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="ControlFlowWithConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphQ1vwEeu02utovL8vPg" name="constraint" ordered="false" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphRVvwEeu02utovL8vPg" name="base_ControlFlow" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//ControlFlow"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphR1vwEeu02utovL8vPg" name="SemanticConstratint" abstract="true">
+          <eAnnotations xmi:id="_yRphSFvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="SemanticConstratint"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphSVvwEeu02utovL8vPg" name="TransitionWithSemanticSecification">
+          <eAnnotations xmi:id="_yRphSlvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="TransitionWithSemanticSecification"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphS1vwEeu02utovL8vPg" name="semanticConstraint" ordered="false" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphTVvwEeu02utovL8vPg" name="base_Transition" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Transition"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphT1vwEeu02utovL8vPg" name="ActionWithSemanticSpecification">
+          <eAnnotations xmi:id="_yRphUFvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="ActionWithSemanticSpecification"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphUVvwEeu02utovL8vPg" name="base_Action" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Action"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphU1vwEeu02utovL8vPg" name="objectlifecycleBehavior" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Behavior"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphVVvwEeu02utovL8vPg" name="preCondition" ordered="false" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphV1vwEeu02utovL8vPg" name="postCondition" ordered="false" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphWVvwEeu02utovL8vPg" name="ObjectLifeCycleConstraint" eSuperTypes="_yRphR1vwEeu02utovL8vPg">
+          <eAnnotations xmi:id="_yRphWlvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="ObjectLifeCycleConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphW1vwEeu02utovL8vPg" name="vertex" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Vertex"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphXlvwEeu02utovL8vPg" name="ValueConstraint" eSuperTypes="_yRphR1vwEeu02utovL8vPg">
+          <eAnnotations xmi:id="_yRphX1vwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="ValueConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphYFvwEeu02utovL8vPg" name="attribute" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_yRphYlvwEeu02utovL8vPg" name="value" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_yRphZFvwEeu02utovL8vPg" name="comperator" ordered="false" lowerBound="1" eType="_yRphZ1vwEeu02utovL8vPg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_yRphZ1vwEeu02utovL8vPg" name="Comperator">
+          <eAnnotations xmi:id="_yRphaFvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Comperator"/>
+          <eLiterals xmi:id="_yRphaVvwEeu02utovL8vPg" name="GreaterThan"/>
+          <eLiterals xmi:id="_yRphalvwEeu02utovL8vPg" name="LessThan" value="1"/>
+          <eLiterals xmi:id="_yRpha1vwEeu02utovL8vPg" name="EqualTo" value="2"/>
+          <eLiterals xmi:id="_yRphbFvwEeu02utovL8vPg" name="GreaterThanOrEqualTo" value="3"/>
+          <eLiterals xmi:id="_yRphbVvwEeu02utovL8vPg" name="LessThanOrEqualTo" value="4"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphblvwEeu02utovL8vPg" name="AndConstraint" eSuperTypes="_yRphR1vwEeu02utovL8vPg">
+          <eAnnotations xmi:id="_yRphb1vwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="AndConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphcFvwEeu02utovL8vPg" name="constraints" ordered="false" lowerBound="1" upperBound="-1" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphc1vwEeu02utovL8vPg" name="OrConstraint" eSuperTypes="_yRphR1vwEeu02utovL8vPg">
+          <eAnnotations xmi:id="_yRphdFvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="OrConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphdVvwEeu02utovL8vPg" name="constraints" ordered="false" lowerBound="1" upperBound="-1" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRpheFvwEeu02utovL8vPg" name="NotConstraint" eSuperTypes="_yRphR1vwEeu02utovL8vPg">
+          <eAnnotations xmi:id="_yRpheVvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="NotConstraint"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yRphelvwEeu02utovL8vPg" name="constraints" ordered="false" lowerBound="1" eType="_yRphR1vwEeu02utovL8vPg" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_yRphfVvwEeu02utovL8vPg" name="BoundedInteger">
+          <eAnnotations xmi:id="_yRphflvwEeu02utovL8vPg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="BoundedInteger"/>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_elementImport.0">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.1">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Action"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.2">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Behavior"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.3">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.4">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.5">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Vertex"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.6">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.7">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Transition"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.8">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Constraint"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.9">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ControlFlow"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="ControlFlowWithConstraint" name="ControlFlowWithConstraint">
+      <ownedAttribute xmi:id="ControlFlowWithConstraint-constraint" name="constraint" type="SemanticConstratint" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ControlFlowWithConstraint-constraint-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ControlFlowWithConstraint-base_ControlFlow" name="base_ControlFlow" association="ControlFlow_ControlFlowWithConstraint">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ControlFlow"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="TransitionWithSemanticSecification" name="TransitionWithSemanticSecification" redefinedClassifier="TransitionWithSemanticSecification">
+      <ownedAttribute xmi:id="TransitionWithSemanticSecification-semanticConstraint" name="semanticConstraint" type="SemanticConstratint" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TransitionWithSemanticSecification-semanticConstraint-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="TransitionWithSemanticSecification-base_Transition" name="base_Transition" association="Transition_TransitionWithSemanticSecification">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Transition"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="ActionWithSemanticSpecification" name="ActionWithSemanticSpecification" redefinedClassifier="ActionWithSemanticSpecification">
+      <ownedAttribute xmi:id="ActionWithSemanticSpecification-base_Action" name="base_Action" association="Action_ActionWithSemanticSpecification">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Action"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ActionWithSemanticSpecification-objectlifecycleBehavior" name="objectlifecycleBehavior" association="Action_ActionWithSemanticSpecification">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Behavior"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ActionWithSemanticSpecification-objectlifecycleBehavior-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ActionWithSemanticSpecification-preCondition" name="preCondition" type="SemanticConstratint" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ActionWithSemanticSpecification-preCondition-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ActionWithSemanticSpecification-postCondition" name="postCondition" type="SemanticConstratint" aggregation="composite" association="Action_ActionWithSemanticSpecification">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ActionWithSemanticSpecification-postCondition-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Action_ActionWithSemanticSpecification" name="Action_ActionWithSemanticSpecification" memberEnd="Action_ActionWithSemanticSpecification-extension_ActionWithSemanticSpecification ActionWithSemanticSpecification-base_Action ActionWithSemanticSpecification-objectlifecycleBehavior ActionWithSemanticSpecification-postCondition">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Action_ActionWithSemanticSpecification-extension_ActionWithSemanticSpecification" name="extension_ActionWithSemanticSpecification" type="ActionWithSemanticSpecification" aggregation="composite" association="Action_ActionWithSemanticSpecification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="SemanticConstratint" name="SemanticConstratint" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="ObjectLifeCycleConstraint" name="ObjectLifeCycleConstraint">
+      <generalization xmi:id="ObjectLifeCycleConstraint-_generalization.0" general="SemanticConstratint"/>
+      <ownedAttribute xmi:id="ObjectLifeCycleConstraint-vertex" name="vertex">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Vertex"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ValueConstraint" name="ValueConstraint">
+      <generalization xmi:id="ValueConstraint-_generalization.0" general="SemanticConstratint"/>
+      <ownedAttribute xmi:id="ValueConstraint-attribute" name="attribute">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ValueConstraint-value" name="value">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ValueConstraint-comperator" name="comperator" type="Comperator"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="AndConstraint" name="AndConstraint">
+      <generalization xmi:id="AndConstraint-_generalization.0" general="SemanticConstratint"/>
+      <ownedAttribute xmi:id="AndConstraint-constraints" name="constraints" type="SemanticConstratint" aggregation="composite">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="AndConstraint-constraints-_upperValue" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="OrConstraint" name="OrConstraint">
+      <generalization xmi:id="OrConstraint-_generalization.0" general="SemanticConstratint"/>
+      <ownedAttribute xmi:id="OrConstraint-constraints" name="constraints" type="SemanticConstratint" aggregation="composite">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OrConstraint-constraints-_upperValue" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="NotConstraint" name="NotConstraint">
+      <generalization xmi:id="NotConstraint-_generalization.0" general="SemanticConstratint"/>
+      <ownedAttribute xmi:id="NotConstraint-constraints" name="constraints" type="SemanticConstratint" aggregation="composite">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="NotConstraint-constraints-_upperValue" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Transition_TransitionWithSemanticSecification" name="Transition_TransitionWithSemanticSecification" memberEnd="Transition_TransitionWithSemanticSecification-extension_TransitionWithSemanticSecification TransitionWithSemanticSecification-base_Transition">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Transition_TransitionWithSemanticSecification-extension_TransitionWithSemanticSecification" name="extension_TransitionWithSemanticSecification" type="TransitionWithSemanticSecification" aggregation="composite" association="Transition_TransitionWithSemanticSecification"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="Comperator" name="Comperator">
+      <ownedLiteral xmi:id="Comperator-GreaterThan" name="GreaterThan"/>
+      <ownedLiteral xmi:id="Comperator-LessThan" name="LessThan"/>
+      <ownedLiteral xmi:id="Comperator-EqualTo" name="EqualTo"/>
+      <ownedLiteral xmi:id="Comperator-GreaterThanOrEqualTo" name="GreaterThanOrEqualTo"/>
+      <ownedLiteral xmi:id="Comperator-LessThanOrEqualTo" name="LessThanOrEqualTo"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="ControlFlow_ControlFlowWithConstraint" name="ControlFlow_ControlFlowWithConstraint" memberEnd="ControlFlow_ControlFlowWithConstraint-extension_ControlFlowWithConstraint ControlFlowWithConstraint-base_ControlFlow">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="ControlFlow_ControlFlowWithConstraint-extension_ControlFlowWithConstraint" name="extension_ControlFlowWithConstraint" type="ControlFlowWithConstraint" aggregation="composite" association="ControlFlow_ControlFlowWithConstraint"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="BoundedInteger" name="BoundedInteger">
+      <generalization xmi:id="BoundedInteger-_generalization.0">
+        <general xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </generalization>
+    </packagedElement>
+    <profileApplication xmi:id="_profileApplication.0">
+      <eAnnotations xmi:id="_S34K8Pn3EeixnOONCu7tHA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <standard:Metaclass xmi:id="_Yb9ekPn3EeixnOONCu7tHA" base_Class="SemanticConstratint"/>
+  <standard:Metaclass xmi:id="_VneS0Pn5EeixnOONCu7tHA" base_Class="ObjectLifeCycleConstraint"/>
+  <standard:Metaclass xmi:id="_0CugEPyFEeiOhOuV4BINyA" base_Class="ValueConstraint"/>
+  <standard:Metaclass xmi:id="_4zZZwPyFEeiOhOuV4BINyA" base_Class="AndConstraint"/>
+  <standard:Metaclass xmi:id="_49d7w_yFEeiOhOuV4BINyA" base_Class="OrConstraint"/>
+  <standard:Metaclass xmi:id="_WqoXYFvvEeu02utovL8vPg" base_Class="NotConstraint"/>
+</xmi:XMI>

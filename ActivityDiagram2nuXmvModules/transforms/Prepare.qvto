@@ -1,0 +1,97 @@
+modeltype UML uses'http://www.eclipse.org/uml2/2.0.0/UML';
+
+//modeltype ECORE uses'http://www.eclipse.org/emf/2002/Ecore';
+//modeltype REPOSITORY uses 'http://ict.tuwien.ac.at/actionspecification';
+//modeltype Profile uses'http://at.ac.tuwien.ict.semantic.profile';
+transformation Prepare(inout inModel : UML);
+
+property REPOSITORY_FILE : String ="platform:/resource/EnrichActivityDiagrams/Process/repository.actionspecification"; 
+property UML_PROFILE : String ="platform:/plugin/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml"; 
+
+main() {
+	inModel.rootObjects().allSubobjectsOfType(Activity)->forEach(a) {
+		manipulateActivity(a);
+	};
+}
+
+helper manipulateActivity(inout a:Activity) {
+	a.node[ForkNode]->forEach(f) {
+		splitOutgoing(f, a);
+	};
+	
+	a.node[JoinNode]->forEach(j) {
+		splitIncoming(j, a);
+	};
+	
+	a.node[DecisionNode]->forEach(d) {
+		splitOutgoing(d, a);
+	};
+	
+	a.node[MergeNode]->forEach(m) {
+		splitIncoming(m, a);
+	};
+}
+
+helper splitOutgoing(inout node:ActivityNode, inout a:Activity) {
+	if(node.outgoing->size() > 2) {
+		var curID = 0;
+		while(node.outgoing->size() > 2) {
+			var size = (node.outgoing->size() / 2)->floor()->selectOne(true);
+			var i = 0;
+			while(i < size) {
+				var copy = node->map createOutgoningsDuplicate(curID)->selectOne(true);
+				node.outgoing := node.outgoing->excluding(copy.outgoing);
+				var flow = object ControlFlow{
+					name := node.name + "Flow" + curID.toString();
+					source := node;
+					target := copy;
+				};
+				a.edge+= flow;
+				curID := curID + 1;
+				a.ownedNode+=copy;
+				i := i + 1;
+			}
+		}
+	}
+}
+
+helper splitIncoming(inout node:ActivityNode, inout a:Activity) {
+	if(node.incoming->size() > 2) {
+		var curID = 0;
+		while(node.incoming->size() > 2) {
+			var size = (node.incoming->size() / 2)->floor()->selectOne(true);
+			var i = 0;
+			while(i < size) {
+				var copy = node->map createIncomingsDuplicate(curID)->selectOne(true);
+				node.incoming := node.incoming->excluding(copy.incoming);
+				var flow = object ControlFlow{
+					name := node.name + "Flow" + curID.toString();
+					source := copy;
+					target := node;
+				};
+				a.edge+= flow;
+				curID := curID + 1;
+				a.ownedNode+=copy;
+				i := i + 1;
+			}
+		}
+	}
+}
+
+mapping ActivityNode :: createOutgoningsDuplicate(curID:Integer) : ActivityNode {
+	init {
+		result := self.clone()
+	}
+	name := self.name + "AutoGen" + curID.toString();
+	outgoing := self.outgoing->selectOne(true);
+	outgoing += self.outgoing->excluding(result.outgoing)->selectOne(true);
+}
+
+mapping ActivityNode :: createIncomingsDuplicate(curID:Integer) : ActivityNode {
+	init {
+		result := self.clone()
+	}
+	name := self.name + "AutoGen" + curID.toString();
+	incoming := self.incoming->selectOne(true);
+	incoming += self.incoming->excluding(result.incoming)->selectOne(true);
+}

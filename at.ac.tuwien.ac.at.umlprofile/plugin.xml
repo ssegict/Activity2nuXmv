@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.uml2.uml.dynamic_package">
+      <profile
+            location="semanticSpecification.profile.uml"
+            uri="http://at.ac.tuwien.ict.semantic.profile">
+      </profile>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+      <profile
+            name="at.ac.tuwien.ac.at.umlprofile.semanticSpecification"
+            path="at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml">
+      </profile>
+   </extension>
+
+</plugin>

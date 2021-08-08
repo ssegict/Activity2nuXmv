@@ -1,0 +1,61 @@
+module MyCodeGenerator
+
+var targetDir = "code-generation-invoice"
+var modelPath = "Models_Invoice"
+var modelOutput = "Model_Invoice_out"
+
+var semanticProfilePath = "../at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml"
+
+Workflow {
+	bean =  org.eclipse.emf.mwe.utils.StandaloneSetup {
+		platformUri = "./"
+		
+		registerGeneratedEPackage = "org.eclipse.uml2.uml.UMLPackage"
+		
+		registerGeneratedEPackage = "org.eclipse.uml2.uml.profile.standard.StandardPackage"
+		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
+		
+		uriMap = {
+		   from = "/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml"
+		   to = semanticProfilePath
+		}
+	}
+
+	component =  org.eclipse.emf.mwe.utils.DirectoryCleaner {
+		directory = "${targetDir},${modelOutput}"
+	}
+	
+	component = ict.generate.mwe.QVTOExecutor {
+		inDirectory = modelPath
+		outFile = "${modelOutput}/activity_all.uml"
+		transformation = "transforms/Prepare.qvto"
+	}
+	
+	component = ict.generate.mwe.ReaderSupport {}
+	
+	component = ict.generate.mwe.Reader {
+		path = modelOutput
+		register = ict.generate.mwe.ReaderSetup {}
+		loadResource = {
+			slot = "activity"
+		}
+		
+		ignoreValidationErrors = false
+	}
+
+	component = ict.generate.mwe.ResourceExecutor {
+		inSlot = "activity"
+		executable = ict.generate.modelToSMV.SMVGenerator {
+			outputPath = targetDir
+		}
+	}
+
+	component = ict.generate.mwe.ResourceExecutor {
+		inSlot = "activity"
+		executable = ict.generate.modelToSMV.MainCodeGenerator {
+			basePath = targetDir
+		}
+	}
+	
+	
+}

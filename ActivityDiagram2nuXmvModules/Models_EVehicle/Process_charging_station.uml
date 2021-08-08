@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:semanticSepcification="http://at.ac.tuwien.ict.semantic.profile" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://at.ac.tuwien.ict.semantic.profile /at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg">
+  <uml:Model xmi:id="_41spAC3NEeunIrWJiW4dhw" name="Process_charging_station">
+    <packageImport xmi:id="_424UwC3NEeunIrWJiW4dhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_8BTpYC3NEeunIrWJiW4dhw" name="Charging_Station_Process" node="_R3RQEC3OEeunIrWJiW4dhw _kw_vIC3OEeunIrWJiW4dhw _vNVnIC8LEeu38d3zxHUFKw _-19h0C8LEeu38d3zxHUFKw _DXU0MC8MEeu38d3zxHUFKw _LqOo0FRLEeuvSIpoIJb8KA _wZ0gwFRMEeuvSIpoIJb8KA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_MVYUUC8MEeu38d3zxHUFKw" target="_kw_vIC3OEeunIrWJiW4dhw" source="_R3RQEC3OEeunIrWJiW4dhw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_cs8_sC8MEeu38d3zxHUFKw" target="_DXU0MC8MEeu38d3zxHUFKw" source="_-19h0C8LEeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DmCTcFRMEeuvSIpoIJb8KA" name="Granted" target="_wZ0gwFRMEeuvSIpoIJb8KA" source="_LqOo0FRLEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Fx344FRMEeuvSIpoIJb8KA" target="_LqOo0FRLEeuvSIpoIJb8KA" source="_kw_vIC3OEeunIrWJiW4dhw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QTh5wFRMEeuvSIpoIJb8KA" name="NotGranted" target="_-19h0C8LEeu38d3zxHUFKw" source="_LqOo0FRLEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_6OCM0FRMEeuvSIpoIJb8KA" target="_-19h0C8LEeu38d3zxHUFKw" source="_vNVnIC8LEeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_6215QFRMEeuvSIpoIJb8KA" target="_vNVnIC8LEeu38d3zxHUFKw" source="_wZ0gwFRMEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_R3RQEC3OEeunIrWJiW4dhw" name="Initial" outgoing="_MVYUUC8MEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_kw_vIC3OEeunIrWJiW4dhw" name="Receive_Check_Authentication_Data" incoming="_MVYUUC8MEeu38d3zxHUFKw" outgoing="_Fx344FRMEeuvSIpoIJb8KA">
+        <result xmi:id="_A3_1UFRLEeuvSIpoIJb8KA" name="result" type="_FpRTUFRIEeuvSIpoIJb8KA">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_A4I_QVRLEeuvSIpoIJb8KA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A4EGwFRLEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A4FU4FRLEeuvSIpoIJb8KA" value="1"/>
+        </result>
+        <trigger xmi:id="_PcQFAC8UEeu38d3zxHUFKw" name="TrigAuthenticationProvided" event="_POy30C8UEeu38d3zxHUFKw"/>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_vNVnIC8LEeu38d3zxHUFKw" name="Receive_Stop_Charging" incoming="_6215QFRMEeuvSIpoIJb8KA" outgoing="_6OCM0FRMEeuvSIpoIJb8KA">
+        <result xmi:id="_qAd8kFRNEeuvSIpoIJb8KA" name="result" type="_bQgFAFRJEeuvSIpoIJb8KA">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_qAmfcVRNEeuvSIpoIJb8KA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qAiOAFRNEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qAjcIFRNEeuvSIpoIJb8KA" value="1"/>
+        </result>
+        <trigger xmi:id="_qAdVgFRNEeuvSIpoIJb8KA" name="TrigStopCharging" event="_p204YFRNEeuvSIpoIJb8KA"/>
+      </node>
+      <node xmi:type="uml:MergeNode" xmi:id="_-19h0C8LEeu38d3zxHUFKw" name="Merge" incoming="_6OCM0FRMEeuvSIpoIJb8KA _QTh5wFRMEeuvSIpoIJb8KA" outgoing="_cs8_sC8MEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_DXU0MC8MEeu38d3zxHUFKw" name="FinalNode" incoming="_cs8_sC8MEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_LqOo0FRLEeuvSIpoIJb8KA" name="DecAuthorizationGrantsCharging" incoming="_Fx344FRMEeuvSIpoIJb8KA" outgoing="_DmCTcFRMEeuvSIpoIJb8KA _QTh5wFRMEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_wZ0gwFRMEeuvSIpoIJb8KA" name="Apply_Voltage" incoming="_DmCTcFRMEeuvSIpoIJb8KA" outgoing="_6215QFRMEeuvSIpoIJb8KA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_f_DDEC3OEeunIrWJiW4dhw" name="SigChargingOptions"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_SY_SAC8LEeu38d3zxHUFKw" name="SigChargingUpdate"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_DE4AAC8REeu38d3zxHUFKw" name="Car_Process" node="_Lsn48C8REeu38d3zxHUFKw _-6djIC8SEeu38d3zxHUFKw _F4aMsC8TEeu38d3zxHUFKw _JI_MoC8TEeu38d3zxHUFKw _V8pFEFRREeuvSIpoIJb8KA _iOn0EFRREeuvSIpoIJb8KA _mqcfIFRREeuvSIpoIJb8KA _uApQoFRREeuvSIpoIJb8KA _w5sE4FRSEeuvSIpoIJb8KA _0ex8QFRSEeuvSIpoIJb8KA _VQ1GsFT7EeuSce0SK5VwvA _KLsv4FT8EeuSce0SK5VwvA _a8o9gFT8EeuSce0SK5VwvA _b9Pe4FT8EeuSce0SK5VwvA _7EUroFT8EeuSce0SK5VwvA">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dHcfIC8TEeu38d3zxHUFKw" target="_JI_MoC8TEeu38d3zxHUFKw" source="_F4aMsC8TEeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_CcNV4FRSEeuvSIpoIJb8KA" target="_mqcfIFRREeuvSIpoIJb8KA" source="_iOn0EFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DS2C8FRSEeuvSIpoIJb8KA" target="_KLsv4FT8EeuSce0SK5VwvA" source="_Lsn48C8REeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DyM4cFRSEeuvSIpoIJb8KA" target="_iOn0EFRREeuvSIpoIJb8KA" source="_V8pFEFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Ew7KgFRSEeuvSIpoIJb8KA" name="Applied" target="_iOn0EFRREeuvSIpoIJb8KA" source="_uApQoFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_KUcdcFRSEeuvSIpoIJb8KA" name="NotFull" target="_uApQoFRREeuvSIpoIJb8KA" source="_mqcfIFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DF_n0FRUEeuvSIpoIJb8KA" name="NotApplied" target="_0ex8QFRSEeuvSIpoIJb8KA" source="_uApQoFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_KsrFUFRUEeuvSIpoIJb8KA" name="Full" target="_w5sE4FRSEeuvSIpoIJb8KA" source="_mqcfIFRREeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ej9_4FRUEeuvSIpoIJb8KA" target="_F4aMsC8TEeu38d3zxHUFKw" source="_0ex8QFRSEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_fRM5UFRUEeuvSIpoIJb8KA" target="_VQ1GsFT7EeuSce0SK5VwvA" source="_-6djIC8SEeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_gSIK0FRUEeuvSIpoIJb8KA" target="_-6djIC8SEeu38d3zxHUFKw" source="_w5sE4FRSEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eraVUFT8EeuSce0SK5VwvA" target="_a8o9gFT8EeuSce0SK5VwvA" source="_KLsv4FT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_fiVWQFT8EeuSce0SK5VwvA" target="_b9Pe4FT8EeuSce0SK5VwvA" source="_a8o9gFT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_gU-UIFT8EeuSce0SK5VwvA" name="Supplied" target="_V8pFEFRREeuvSIpoIJb8KA" source="_b9Pe4FT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_LSrwoFT9EeuSce0SK5VwvA" name="NotSupplied" target="_7EUroFT8EeuSce0SK5VwvA" source="_b9Pe4FT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_OLZqMFT9EeuSce0SK5VwvA" name="Connected" target="_a8o9gFT8EeuSce0SK5VwvA" source="_7EUroFT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QLkLIFT9EeuSce0SK5VwvA" name="Disconnected" target="_VQ1GsFT7EeuSce0SK5VwvA" source="_7EUroFT8EeuSce0SK5VwvA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_k4IkAFUBEeuawNSxsUN9Qg" target="_F4aMsC8TEeu38d3zxHUFKw" source="_VQ1GsFT7EeuSce0SK5VwvA"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_Lsn48C8REeu38d3zxHUFKw" name="InitialNode" outgoing="_DS2C8FRSEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_-6djIC8SEeu38d3zxHUFKw" name="Send_Charging_Finished" incoming="_gSIK0FRUEeuvSIpoIJb8KA" outgoing="_fRM5UFRUEeuvSIpoIJb8KA" signal="_bQgFAFRJEeuvSIpoIJb8KA">
+        <target xmi:id="_-6djIS8SEeu38d3zxHUFKw" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-6djIi8SEeu38d3zxHUFKw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-6djIy8SEeu38d3zxHUFKw" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:MergeNode" xmi:id="_F4aMsC8TEeu38d3zxHUFKw" name="Merge" incoming="_ej9_4FRUEeuvSIpoIJb8KA _k4IkAFUBEeuawNSxsUN9Qg" outgoing="_dHcfIC8TEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_JI_MoC8TEeu38d3zxHUFKw" name="ActivityFinal" incoming="_dHcfIC8TEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_V8pFEFRREeuvSIpoIJb8KA" name="Start_Charging_Battery" incoming="_gU-UIFT8EeuSce0SK5VwvA" outgoing="_DyM4cFRSEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_iOn0EFRREeuvSIpoIJb8KA" name="Merge1" incoming="_DyM4cFRSEeuvSIpoIJb8KA _Ew7KgFRSEeuvSIpoIJb8KA" outgoing="_CcNV4FRSEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_mqcfIFRREeuvSIpoIJb8KA" name="DecBatteryFull" incoming="_CcNV4FRSEeuvSIpoIJb8KA" outgoing="_KUcdcFRSEeuvSIpoIJb8KA _KsrFUFRUEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_uApQoFRREeuvSIpoIJb8KA" name="DecVoltageSupplied" incoming="_KUcdcFRSEeuvSIpoIJb8KA" outgoing="_Ew7KgFRSEeuvSIpoIJb8KA _DF_n0FRUEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_w5sE4FRSEeuvSIpoIJb8KA" name="Stop_Charging_Battery_2" incoming="_KsrFUFRUEeuvSIpoIJb8KA" outgoing="_gSIK0FRUEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_0ex8QFRSEeuvSIpoIJb8KA" name="Stop_Charging_Battery" incoming="_DF_n0FRUEeuvSIpoIJb8KA" outgoing="_ej9_4FRUEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_VQ1GsFT7EeuSce0SK5VwvA" name="Merge2" incoming="_fRM5UFRUEeuvSIpoIJb8KA _QLkLIFT9EeuSce0SK5VwvA" outgoing="_k4IkAFUBEeuawNSxsUN9Qg"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_KLsv4FT8EeuSce0SK5VwvA" name="Initiate_Process" incoming="_DS2C8FRSEeuvSIpoIJb8KA" outgoing="_eraVUFT8EeuSce0SK5VwvA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_a8o9gFT8EeuSce0SK5VwvA" name="Merge3" incoming="_eraVUFT8EeuSce0SK5VwvA _OLZqMFT9EeuSce0SK5VwvA" outgoing="_fiVWQFT8EeuSce0SK5VwvA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_b9Pe4FT8EeuSce0SK5VwvA" name="DecVoltageSupplied1" incoming="_fiVWQFT8EeuSce0SK5VwvA" outgoing="_gU-UIFT8EeuSce0SK5VwvA _LSrwoFT9EeuSce0SK5VwvA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_7EUroFT8EeuSce0SK5VwvA" name="DecCableDisconnected" incoming="_LSrwoFT9EeuSce0SK5VwvA" outgoing="_OLZqMFT9EeuSce0SK5VwvA _QLkLIFT9EeuSce0SK5VwvA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_KFxacC8SEeu38d3zxHUFKw" name="SigChargingOptionSet"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_POy30C8UEeu38d3zxHUFKw" name="EventAuthenticationProvided" signal="_FpRTUFRIEeuvSIpoIJb8KA"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_KcABwC8VEeu38d3zxHUFKw" name="EventChargingOptionSet" signal="_KFxacC8SEeu38d3zxHUFKw"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_SGyjMC8VEeu38d3zxHUFKw" name="EventChargingOptions" signal="_f_DDEC3OEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_ghl_4C8VEeu38d3zxHUFKw" name="EventChargingUpdate" signal="_SY_SAC8LEeu38d3zxHUFKw"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_8xKNIC86EeuZGJ2ngK3buQ" name="User_Process" node="_1f9jMDMmEeuRaPPmfbSV2w _VBRfwDMlEeuRaPPmfbSV2w _CVl0IC89EeuZGJ2ngK3buQ _5opaEFRHEeuvSIpoIJb8KA _B6XYoFRIEeuvSIpoIJb8KA _LREpUFRIEeuvSIpoIJb8KA _zeBOYFRIEeuvSIpoIJb8KA _3lI0wFRIEeuvSIpoIJb8KA _YZI2UFRJEeuvSIpoIJb8KA _87Ko0FRJEeuvSIpoIJb8KA _DRKhkFRKEeuvSIpoIJb8KA _zt938FWSEeuawNSxsUN9Qg">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_VK-tsFRIEeuvSIpoIJb8KA" target="_LREpUFRIEeuvSIpoIJb8KA" source="_B6XYoFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_V7VMkFRIEeuvSIpoIJb8KA" target="_B6XYoFRIEeuvSIpoIJb8KA" source="_VBRfwDMlEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_WU7YUFRIEeuvSIpoIJb8KA" target="_VBRfwDMlEeuRaPPmfbSV2w" source="_5opaEFRHEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_tK_KEFRIEeuvSIpoIJb8KA" name="Granted" target="_zt938FWSEeuawNSxsUN9Qg" source="_LREpUFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EGyXcFRJEeuvSIpoIJb8KA" name="NotGranted" target="_zeBOYFRIEeuvSIpoIJb8KA" source="_LREpUFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ucXc8FRJEeuvSIpoIJb8KA" name="Abort" target="_YZI2UFRJEeuvSIpoIJb8KA" source="_3lI0wFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_u9GLcFRJEeuvSIpoIJb8KA" target="_zeBOYFRIEeuvSIpoIJb8KA" source="_YZI2UFRJEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_FnNL4FRKEeuvSIpoIJb8KA" name="Full" target="_DRKhkFRKEeuvSIpoIJb8KA" source="_87Ko0FRJEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_HDm4cFRKEeuvSIpoIJb8KA" name="NotFull" target="_zt938FWSEeuawNSxsUN9Qg" source="_87Ko0FRJEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_LiUfcFRKEeuvSIpoIJb8KA" name="NoAbort" target="_87Ko0FRJEeuvSIpoIJb8KA" source="_3lI0wFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_OoJn8FRKEeuvSIpoIJb8KA" target="_DRKhkFRKEeuvSIpoIJb8KA" source="_zeBOYFRIEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QNFlcFRKEeuvSIpoIJb8KA" target="_1f9jMDMmEeuRaPPmfbSV2w" source="_DRKhkFRKEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_RLHT8FRKEeuvSIpoIJb8KA" target="_CVl0IC89EeuZGJ2ngK3buQ" source="_1f9jMDMmEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_8EUe4FWSEeuawNSxsUN9Qg" target="_3lI0wFRIEeuvSIpoIJb8KA" source="_zt938FWSEeuawNSxsUN9Qg"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_CVl0IC89EeuZGJ2ngK3buQ" name="ActivityFinal" incoming="_RLHT8FRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_VBRfwDMlEeuRaPPmfbSV2w" name="Call_Connect_Cable_Activity" incoming="_WU7YUFRIEeuvSIpoIJb8KA" outgoing="_V7VMkFRIEeuvSIpoIJb8KA" behavior="_qQjBQDMiEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_1f9jMDMmEeuRaPPmfbSV2w" name="Call_Disconnect_Cable_Activity" incoming="_QNFlcFRKEeuvSIpoIJb8KA" outgoing="_RLHT8FRKEeuvSIpoIJb8KA" behavior="_ykOSMDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_5opaEFRHEeuvSIpoIJb8KA" name="Initial" outgoing="_WU7YUFRIEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_B6XYoFRIEeuvSIpoIJb8KA" name="Send_Provide_Authentication" incoming="_V7VMkFRIEeuvSIpoIJb8KA" outgoing="_VK-tsFRIEeuvSIpoIJb8KA" signal="_FpRTUFRIEeuvSIpoIJb8KA">
+        <target xmi:id="_F6ci4FRIEeuvSIpoIJb8KA" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F6ci4VRIEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F6ci4lRIEeuvSIpoIJb8KA" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="_LREpUFRIEeuvSIpoIJb8KA" name="DecAuthorizationGrantsCharging" incoming="_VK-tsFRIEeuvSIpoIJb8KA" outgoing="_tK_KEFRIEeuvSIpoIJb8KA _EGyXcFRJEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_zeBOYFRIEeuvSIpoIJb8KA" name="Merge2" incoming="_u9GLcFRJEeuvSIpoIJb8KA _EGyXcFRJEeuvSIpoIJb8KA" outgoing="_OoJn8FRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_3lI0wFRIEeuvSIpoIJb8KA" name="DecAbortCharging" incoming="_8EUe4FWSEeuawNSxsUN9Qg" outgoing="_ucXc8FRJEeuvSIpoIJb8KA _LiUfcFRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_YZI2UFRJEeuvSIpoIJb8KA" name="Send_Stop_Charging" incoming="_ucXc8FRJEeuvSIpoIJb8KA" outgoing="_u9GLcFRJEeuvSIpoIJb8KA" signal="_bQgFAFRJEeuvSIpoIJb8KA">
+        <target xmi:id="_be67gFRJEeuvSIpoIJb8KA" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_be67gVRJEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_be67glRJEeuvSIpoIJb8KA" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:DecisionNode" xmi:id="_87Ko0FRJEeuvSIpoIJb8KA" name="DecBatteryFull" incoming="_LiUfcFRKEeuvSIpoIJb8KA" outgoing="_FnNL4FRKEeuvSIpoIJb8KA _HDm4cFRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_DRKhkFRKEeuvSIpoIJb8KA" name="Merge3" incoming="_FnNL4FRKEeuvSIpoIJb8KA _OoJn8FRKEeuvSIpoIJb8KA" outgoing="_QNFlcFRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_zt938FWSEeuawNSxsUN9Qg" name="Merge4" incoming="_HDm4cFRKEeuvSIpoIJb8KA _tK_KEFRIEeuvSIpoIJb8KA" outgoing="_8EUe4FWSEeuawNSxsUN9Qg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_YlLRMC88EeuZGJ2ngK3buQ" name="SigIdentification"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_ArPOUC9BEeuZGJ2ngK3buQ" name="SigEndChargingChargingStation"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_3YnW8C9BEeuZGJ2ngK3buQ" name="EventEndChargingChargingStation" signal="_ArPOUC9BEeuZGJ2ngK3buQ"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_1BrfUC9CEeuZGJ2ngK3buQ" name="SigEndChargingCar"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_A7DhEC9DEeuZGJ2ngK3buQ" name="EventEndChargingCar" signal="_1BrfUC9CEeuZGJ2ngK3buQ"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_qQjBQDMiEeuRaPPmfbSV2w" name="Connect_Cable_Activity" node="_76FDwDMiEeuRaPPmfbSV2w _9oyBQDMiEeuRaPPmfbSV2w __sLcYDMiEeuRaPPmfbSV2w _FOX5oDMjEeuRaPPmfbSV2w _MABzoDMjEeuRaPPmfbSV2w _QPrD4DMjEeuRaPPmfbSV2w _XeYGQDMjEeuRaPPmfbSV2w _gtIU0DMjEeuRaPPmfbSV2w">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_iSfwIDMjEeuRaPPmfbSV2w" target="__sLcYDMiEeuRaPPmfbSV2w" source="_gtIU0DMjEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_iy8KwDMjEeuRaPPmfbSV2w" target="_FOX5oDMjEeuRaPPmfbSV2w" source="__sLcYDMiEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jUoikDMjEeuRaPPmfbSV2w" target="_XeYGQDMjEeuRaPPmfbSV2w" source="__sLcYDMiEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_kB6fUDMjEeuRaPPmfbSV2w" target="_QPrD4DMjEeuRaPPmfbSV2w" source="_FOX5oDMjEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_myqIoDMjEeuRaPPmfbSV2w" target="_9oyBQDMiEeuRaPPmfbSV2w" source="_MABzoDMjEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_nXZNYDMjEeuRaPPmfbSV2w" target="_9oyBQDMiEeuRaPPmfbSV2w" source="_QPrD4DMjEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_n6suwDMjEeuRaPPmfbSV2w" target="_76FDwDMiEeuRaPPmfbSV2w" source="_9oyBQDMiEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_rlrLsDMjEeuRaPPmfbSV2w" target="_MABzoDMjEeuRaPPmfbSV2w" source="_XeYGQDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_76FDwDMiEeuRaPPmfbSV2w" name="FinalNode" incoming="_n6suwDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_9oyBQDMiEeuRaPPmfbSV2w" name="Merge" incoming="_myqIoDMjEeuRaPPmfbSV2w _nXZNYDMjEeuRaPPmfbSV2w" outgoing="_n6suwDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="__sLcYDMiEeuRaPPmfbSV2w" name="Decision" incoming="_iSfwIDMjEeuRaPPmfbSV2w" outgoing="_iy8KwDMjEeuRaPPmfbSV2w _jUoikDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_FOX5oDMjEeuRaPPmfbSV2w" name="Connect_Charging_Cable_Car_1" incoming="_iy8KwDMjEeuRaPPmfbSV2w" outgoing="_kB6fUDMjEeuRaPPmfbSV2w" language="" body=""/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_MABzoDMjEeuRaPPmfbSV2w" name="Connect_Charging_Cable_Car_2" incoming="_rlrLsDMjEeuRaPPmfbSV2w" outgoing="_myqIoDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_QPrD4DMjEeuRaPPmfbSV2w" name="Connect_Charging_Cable_Station_1" incoming="_kB6fUDMjEeuRaPPmfbSV2w" outgoing="_nXZNYDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_XeYGQDMjEeuRaPPmfbSV2w" name="Connect_Charging_Cable_Station_2" incoming="_jUoikDMjEeuRaPPmfbSV2w" outgoing="_rlrLsDMjEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_gtIU0DMjEeuRaPPmfbSV2w" name="Initial" outgoing="_iSfwIDMjEeuRaPPmfbSV2w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_ykOSMDMjEeuRaPPmfbSV2w" name="Disconnect_Cable_Activity" node="_AZL24DMkEeuRaPPmfbSV2w _CYgDQDMkEeuRaPPmfbSV2w _Dq6tYDMkEeuRaPPmfbSV2w _EHIIQDMkEeuRaPPmfbSV2w _EbNh4DMkEeuRaPPmfbSV2w _EuV5QDMkEeuRaPPmfbSV2w _QAPEQDMkEeuRaPPmfbSV2w _RmyLUDMkEeuRaPPmfbSV2w">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ZD_jwDMkEeuRaPPmfbSV2w" target="_CYgDQDMkEeuRaPPmfbSV2w" source="_AZL24DMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ZoNrIDMkEeuRaPPmfbSV2w" target="_Dq6tYDMkEeuRaPPmfbSV2w" source="_CYgDQDMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_aN1gsDMkEeuRaPPmfbSV2w" target="_EbNh4DMkEeuRaPPmfbSV2w" source="_Dq6tYDMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_awRfYDMkEeuRaPPmfbSV2w" target="_QAPEQDMkEeuRaPPmfbSV2w" source="_EbNh4DMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_baIUsDMkEeuRaPPmfbSV2w" target="_RmyLUDMkEeuRaPPmfbSV2w" source="_QAPEQDMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_cgeRsDMkEeuRaPPmfbSV2w" target="_QAPEQDMkEeuRaPPmfbSV2w" source="_EuV5QDMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_d21AoDMkEeuRaPPmfbSV2w" target="_EuV5QDMkEeuRaPPmfbSV2w" source="_EHIIQDMkEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eevVMDMkEeuRaPPmfbSV2w" target="_EHIIQDMkEeuRaPPmfbSV2w" source="_CYgDQDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_AZL24DMkEeuRaPPmfbSV2w" name="Initial" outgoing="_ZD_jwDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_CYgDQDMkEeuRaPPmfbSV2w" name="Decision" incoming="_ZD_jwDMkEeuRaPPmfbSV2w" outgoing="_ZoNrIDMkEeuRaPPmfbSV2w _eevVMDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Dq6tYDMkEeuRaPPmfbSV2w" name="Disconnect_Charging_Cable_Car_1" incoming="_ZoNrIDMkEeuRaPPmfbSV2w" outgoing="_aN1gsDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_EHIIQDMkEeuRaPPmfbSV2w" name="Disconnect_Charging_Cable_Station_2" incoming="_eevVMDMkEeuRaPPmfbSV2w" outgoing="_d21AoDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_EbNh4DMkEeuRaPPmfbSV2w" name="Disconnect_Charging_Cable_Station_1" incoming="_aN1gsDMkEeuRaPPmfbSV2w" outgoing="_awRfYDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_EuV5QDMkEeuRaPPmfbSV2w" name="Disconnect_Charging_Cable_Car_2" incoming="_d21AoDMkEeuRaPPmfbSV2w" outgoing="_cgeRsDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_QAPEQDMkEeuRaPPmfbSV2w" name="Merge" incoming="_awRfYDMkEeuRaPPmfbSV2w _cgeRsDMkEeuRaPPmfbSV2w" outgoing="_baIUsDMkEeuRaPPmfbSV2w"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_RmyLUDMkEeuRaPPmfbSV2w" name="Final" incoming="_baIUsDMkEeuRaPPmfbSV2w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_FpRTUFRIEeuvSIpoIJb8KA" name="SigAuthenticationProvided"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_bQgFAFRJEeuvSIpoIJb8KA" name="SigStopCharging"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_p204YFRNEeuvSIpoIJb8KA" name="EventStopCharging" signal="_bQgFAFRJEeuvSIpoIJb8KA"/>
+    <profileApplication xmi:id="_m0q50FyvEeuGANEPbvMd3Q">
+      <eAnnotations xmi:id="_m0q50VyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg"/>
+      </eAnnotations>
+      <appliedProfile href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_rEJWgDMkEeuRaPPmfbSV2w" base_Action="_Dq6tYDMkEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_kvoScC2oEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2gVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-RcZcC2gEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_sCt3kDMkEeuRaPPmfbSV2w" base_Action="_EHIIQDMkEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_CKhukC3HEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2g1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_R19w4C3AEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_swBpgDMkEeuRaPPmfbSV2w" base_Action="_EbNh4DMkEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_CKhukC3HEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2hVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_R19w4C3AEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_tdS_MDMkEeuRaPPmfbSV2w" base_Action="_EuV5QDMkEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_kvoScC2oEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2h1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-RcZcC2gEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_u2aHMDMkEeuRaPPmfbSV2w" base_Action="_FOX5oDMjEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_BhPSEC2oEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2iVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-pklkC2gEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_vtoqIDMkEeuRaPPmfbSV2w" base_Action="_XeYGQDMjEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_9cU6EC3GEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2i1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_ZtcDcC3AEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_wabesDMkEeuRaPPmfbSV2w" base_Action="_QPrD4DMjEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_9cU6EC3GEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2jVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_ZtcDcC3AEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_xRqBoDMkEeuRaPPmfbSV2w" base_Action="_MABzoDMjEeuRaPPmfbSV2w">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_BhPSEC2oEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2j1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-pklkC2gEeunIrWJiW4dhw"/>
+    </postCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_oNFqkDO4EeuRaPPmfbSV2w" base_Action="_kw_vIC3OEeunIrWJiW4dhw">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_Fw9v8FS6EeuvSIpoIJb8KA"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_s3-VMFRNEeuvSIpoIJb8KA" base_Action="_wZ0gwFRMEeuvSIpoIJb8KA">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_FxenIC3HEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_XzB-8FRREeuvSIpoIJb8KA" base_Action="_V8pFEFRREeuvSIpoIJb8KA">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_87LToC2sEeunIrWJiW4dhw"/>
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2k1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_sUw-MFTAEeuvSIpoIJb8KA"/>
+    </preCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_y5BfYFRSEeuvSIpoIJb8KA" base_Action="_w5sE4FRSEeuvSIpoIJb8KA">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_pdvOEC2tEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_10nt0FRSEeuvSIpoIJb8KA" base_Action="_0ex8QFRSEeuvSIpoIJb8KA">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_pdvOEC2tEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_3VPEAFSqEeuvSIpoIJb8KA" base_ControlFlow="_QTh5wFRMEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odk1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_u_PAMFSbEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_5Zh3AFSqEeuvSIpoIJb8KA" base_ControlFlow="_DmCTcFRMEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odlVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_dXd4QFSbEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_GeHHoFSrEeuvSIpoIJb8KA" base_ControlFlow="_DF_n0FRUEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odm1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_r_yzwFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_IOtikFSrEeuvSIpoIJb8KA" base_ControlFlow="_Ew7KgFRSEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odnVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_sUw-MFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_KbrJYFSrEeuvSIpoIJb8KA" base_ControlFlow="_KsrFUFRUEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odn1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_ZtjfYFSoEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_NEDg4FSrEeuvSIpoIJb8KA" base_ControlFlow="_KUcdcFRSEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:OrConstraint" xmi:id="_m0odoVyvEeuGANEPbvMd3Q">
+      <constraints xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odolyvEeuGANEPbvMd3Q">
+        <vertex xmi:type="uml:State" href="OLC_Car.uml#_PlwI8FSoEeuvSIpoIJb8KA"/>
+      </constraints>
+      <constraints xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odo1yvEeuGANEPbvMd3Q">
+        <vertex xmi:type="uml:State" href="OLC_Car.uml#_QtBTAFSoEeuvSIpoIJb8KA"/>
+      </constraints>
+      <constraints xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odpFyvEeuGANEPbvMd3Q">
+        <vertex xmi:type="uml:State" href="OLC_Car.uml#_VADOcFSoEeuvSIpoIJb8KA"/>
+      </constraints>
+      <constraints xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odpVyvEeuGANEPbvMd3Q">
+        <vertex xmi:type="uml:State" href="OLC_Car.uml#_W1d38FSoEeuvSIpoIJb8KA"/>
+      </constraints>
+      <constraints xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odplyvEeuGANEPbvMd3Q">
+        <vertex xmi:type="uml:Pseudostate" href="OLC_Car.uml#_M-tOMFSoEeuvSIpoIJb8KA"/>
+      </constraints>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_PXY1cFSrEeuvSIpoIJb8KA" base_ControlFlow="_tK_KEFRIEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odqFyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_dXd4QFSbEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_QoVf8FSrEeuvSIpoIJb8KA" base_ControlFlow="_EGyXcFRJEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odqlyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_u_PAMFSbEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_YHYEYFSrEeuvSIpoIJb8KA" base_ControlFlow="_HDm4cFRKEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odrFyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_sUw-MFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_akqmMFSrEeuvSIpoIJb8KA" base_ControlFlow="_FnNL4FRKEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0odrlyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_r_yzwFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_HqMtAFS7EeuvSIpoIJb8KA" base_Action="_vNVnIC8LEeu38d3zxHUFKw">
+    <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_RCEKkC3HEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_4B0rUFT5EeuSce0SK5VwvA" base_Action="_YZI2UFRJEeuvSIpoIJb8KA"/>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_YbM7gFT8EeuSce0SK5VwvA" base_Action="_KLsv4FT8EeuSce0SK5VwvA">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEpVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-pklkC2gEeunIrWJiW4dhw"/>
+    </preCondition>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_brPBgFT_EeuawNSxsUN9Qg" base_ControlFlow="_OLZqMFT9EeuSce0SK5VwvA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEp1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-pklkC2gEeunIrWJiW4dhw"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_c7fvgFT_EeuawNSxsUN9Qg" base_ControlFlow="_gU-UIFT8EeuSce0SK5VwvA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEqVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_sUw-MFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_d_fjIFT_EeuawNSxsUN9Qg" base_ControlFlow="_LSrwoFT9EeuSce0SK5VwvA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0prsVyvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_r_yzwFTAEeuvSIpoIJb8KA"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_fbOhUFT_EeuawNSxsUN9Qg" base_ControlFlow="_QLkLIFT9EeuSce0SK5VwvA">
+    <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0prs1yvEeuGANEPbvMd3Q">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-RcZcC2gEeunIrWJiW4dhw"/>
+    </constraint>
+  </semanticSepcification:ControlFlowWithConstraint>
+</xmi:XMI>

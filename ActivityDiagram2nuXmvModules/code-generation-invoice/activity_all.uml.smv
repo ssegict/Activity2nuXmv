@@ -1,0 +1,209 @@
+-- Module Compilation of main
+MODULE MainActivity(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		ForktoCall_Delivering_Company_Process: ControlFlow();
+		Call_Delivering_Company_ProcesstoJoin: ControlFlow();
+		ForktoCall_Customer_Process: ControlFlow();
+		Call_Customer_ProcesstoJoin: ControlFlow();
+		JointoFinalNode: ControlFlow();
+		InitialtoFork: ControlFlow();
+		
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoFork, reset);
+		FinalNode: EndPoint(controlFlowOut.backwardSignal, JointoFinalNode, reset);
+		Fork: Fork(InitialtoFork, ForktoCall_Delivering_Company_Process, ForktoCall_Customer_Process, reset);
+		Join: Join(Call_Delivering_Company_ProcesstoJoin, Call_Customer_ProcesstoJoin, JointoFinalNode, reset);
+		Call_Delivering_Company_Process: Delivering_Company_Process(ForktoCall_Delivering_Company_Process, Call_Delivering_Company_ProcesstoJoin, container, reset);
+		Call_Customer_Process: Customer_Process(ForktoCall_Customer_Process, Call_Customer_ProcesstoJoin, container, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := FinalNode.FINISHED;
+
+	DEFINE
+		trig0 := Call_Delivering_Company_Process.trig0;
+		trig1 := Call_Delivering_Company_Process.trig1;
+		trig2 := Call_Delivering_Company_Process.trig2;
+		trig3 := Call_Delivering_Company_Process.trig3;
+		trig4 := Call_Delivering_Company_Process.trig4;
+		trig5 := Call_Customer_Process.trig5;
+		trig6 := Call_Customer_Process.trig6;
+		trig7 := Call_Customer_Process.trig7;
+		trig8 := Call_Customer_Process.trig8;
+		SUB_ACTIVE := Initial.ACTIVE | FinalNode.ACTIVE | Fork.ACTIVE | Join.ACTIVE | Call_Delivering_Company_Process.SUB_ACTIVE | Call_Customer_Process.SUB_ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+
+
+-- STM Compilation of OLC_Customer
+MODULE OLC_Customer_StateMachine(container)
+	VAR
+		Cycle_error : {Initial, Set_Received, Set_Authorized, FinalState, Set_Paid, error};
+		Received : {Initial, CP_Received_False, CP_Received_True};
+		Authorized : {Initial, CP_Authorized_False, CP_Authorized_True};
+		Paid : {Initial, CP_Paid_True, CP_Paid_False};
+	
+	DEFINE
+		no_signal_Cycle_error := !(container.trig5 | container.trig6 | container.trig7);
+		ERROR := (Cycle_error = error);
+	
+	ASSIGN
+		init(Cycle_error) := Initial;
+		next(Cycle_error) :=
+			case
+				(Cycle_error = Initial) & (container.trig5): Set_Received;
+				(Cycle_error = Set_Received) & (container.trig6): Set_Authorized;
+				(Cycle_error = Set_Authorized) & (container.trig7): Set_Paid;
+				(Cycle_error = Set_Paid) : FinalState;
+				(Cycle_error = Set_Received) & (container.trig7): Set_Paid;
+				no_signal_Cycle_error : Cycle_error;
+				TRUE : error;
+			esac;
+		
+		init(Received) := Initial;
+		next(Received) :=
+			case
+				(Received = Initial) : CP_Received_False;
+				(Received = CP_Received_False) & ((container.olc.OLC_Customer_StateMachineobj.Cycle_error = Set_Received) = TRUE): CP_Received_True;
+				TRUE : Received;
+			esac;
+		
+		init(Authorized) := Initial;
+		next(Authorized) :=
+			case
+				(Authorized = CP_Authorized_False) & ((container.olc.OLC_Customer_StateMachineobj.Cycle_error = Set_Authorized) = TRUE): CP_Authorized_True;
+				(Authorized = Initial) : CP_Authorized_False;
+				TRUE : Authorized;
+			esac;
+		
+		init(Paid) := Initial;
+		next(Paid) :=
+			case
+				(Paid = CP_Paid_False) & ((container.olc.OLC_Customer_StateMachineobj.Cycle_error = Set_Paid) = TRUE): CP_Paid_True;
+				(Paid = Initial) : CP_Paid_False;
+				TRUE : Paid;
+			esac;
+		
+
+
+-- STM Compilation of OLC_DC
+MODULE OLC_DC_StateMachine(container)
+	VAR
+		Cycle_error : {Initial, Set_Created, Set_Transmitted, Set_Payment_Received, Set_Booked, Final, error};
+		Created : {Initial, DP_Created_False, DP_Created_True};
+		Transmitted : {Initial, DP_Transmitted_False, DP_Transmitted_True};
+		Booked : {Initial, DP_Booked_False, DP_Booked_True};
+		PaymentReceived : {Initial, DP_Payment_Received_False, DP_Payment_Received_True};
+	
+	DEFINE
+		no_signal_Cycle_error := !(container.trig1 | container.trig0 | container.trig3 | container.trig2);
+		ERROR := (Cycle_error = error);
+	
+	ASSIGN
+		init(Cycle_error) := Initial;
+		next(Cycle_error) :=
+			case
+				(Cycle_error = Initial) & (container.trig1): Set_Created;
+				(Cycle_error = Set_Booked) : Final;
+				(Cycle_error = Set_Payment_Received) & (container.trig0): Set_Booked;
+				(Cycle_error = Set_Transmitted) & (container.trig3): Set_Payment_Received;
+				(Cycle_error = Set_Created) & (container.trig2): Set_Transmitted;
+				no_signal_Cycle_error : Cycle_error;
+				TRUE : error;
+			esac;
+		
+		init(Created) := Initial;
+		next(Created) :=
+			case
+				(Created = Initial) : DP_Created_False;
+				(Created = DP_Created_False) & ((container.olc.OLC_DC_StateMachineobj.Cycle_error = Set_Created) = TRUE): DP_Created_True;
+				TRUE : Created;
+			esac;
+		
+		init(Transmitted) := Initial;
+		next(Transmitted) :=
+			case
+				(Transmitted = Initial) : DP_Transmitted_False;
+				(Transmitted = DP_Transmitted_False) & ((container.olc.OLC_DC_StateMachineobj.Cycle_error = Set_Transmitted) = TRUE): DP_Transmitted_True;
+				TRUE : Transmitted;
+			esac;
+		
+		init(Booked) := Initial;
+		next(Booked) :=
+			case
+				(Booked = Initial) : DP_Booked_False;
+				(Booked = DP_Booked_False) & ((container.olc.OLC_DC_StateMachineobj.Cycle_error = Set_Booked) = TRUE): DP_Booked_True;
+				TRUE : Booked;
+			esac;
+		
+		init(PaymentReceived) := Initial;
+		next(PaymentReceived) :=
+			case
+				(PaymentReceived = Initial) : DP_Payment_Received_False;
+				(PaymentReceived = DP_Payment_Received_False) & ((container.olc.OLC_DC_StateMachineobj.Cycle_error = Set_Payment_Received) = TRUE): DP_Payment_Received_True;
+				TRUE : PaymentReceived;
+			esac;
+		
+
+
+-- Module Compilation of Process_DP_Customer
+MODULE Customer_Process(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		InitialtoReceive_Invoice: ControlFlow();
+		MergetoSend_Paid_Invoice: ControlFlow();
+		DecAuthorizeOrNottoAuthorize_Invoice: ControlFlow();
+		Receive_InvoicetoDecAuthorizeOrNot: ControlFlow();
+		DecAuthorizeOrNottoMerge: ControlFlow();
+		Authorize_InvoicetoMerge: ControlFlow();
+		Send_Paid_InvoicetoFinalNode: ControlFlow();
+		
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoReceive_Invoice, reset);
+		Receive_Invoice: ReceiveAction(TRUE, (container.olc.OLC_Customer_StateMachineobj.Received = CP_Received_True), container.trig4, InitialtoReceive_Invoice, Receive_InvoicetoDecAuthorizeOrNot, reset);
+		Merge: Merge(DecAuthorizeOrNottoMerge, Authorize_InvoicetoMerge, MergetoSend_Paid_Invoice, reset);
+		FinalNode: EndPoint(controlFlowOut.backwardSignal, Send_Paid_InvoicetoFinalNode, reset);
+		DecAuthorizeOrNot: Decision((container.olc.amount9 >= 50), (container.olc.amount9 < 50), Receive_InvoicetoDecAuthorizeOrNot, DecAuthorizeOrNottoAuthorize_Invoice, DecAuthorizeOrNottoMerge, reset);
+		Authorize_Invoice: Action((container.olc.OLC_Customer_StateMachineobj.Received = CP_Received_True), (container.olc.OLC_Customer_StateMachineobj.Authorized = CP_Authorized_True), DecAuthorizeOrNottoAuthorize_Invoice, Authorize_InvoicetoMerge, reset);
+		Send_Paid_Invoice: SendAction((container.olc.OLC_Customer_StateMachineobj.Received = CP_Received_True), (container.olc.OLC_Customer_StateMachineobj.Paid = CP_Paid_True), MergetoSend_Paid_Invoice, Send_Paid_InvoicetoFinalNode, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := FinalNode.FINISHED;
+
+	DEFINE
+		trig5 := Receive_Invoice.BEH;
+		trig6 := Authorize_Invoice.BEH;
+		trig7 := Send_Paid_Invoice.TRIGGEROUT;
+		trig8 := Send_Paid_Invoice.TRIGGEROUT;
+		SUB_ACTIVE := Initial.ACTIVE | Receive_Invoice.ACTIVE | Merge.ACTIVE | FinalNode.ACTIVE | DecAuthorizeOrNot.ACTIVE | Authorize_Invoice.ACTIVE | Send_Paid_Invoice.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+MODULE Delivering_Company_Process(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		Call_Create_Invoice_ActivitytoSend_Transmit_Invoice: ControlFlow();
+		InitialtoCall_Create_Invoice_Activity: ControlFlow();
+		Receive_Paid_InvoicetoCall_Book_Invoice_Activity: ControlFlow();
+		Call_Book_Invoice_ActivitytoActivityFinal: ControlFlow();
+		Send_Transmit_InvoicetoReceive_Paid_Invoice: ControlFlow();
+		
+		Call_Book_Invoice_Activity: Action((container.olc.OLC_DC_StateMachineobj.PaymentReceived = DP_Payment_Received_True), (container.olc.OLC_DC_StateMachineobj.Booked = DP_Booked_True), Receive_Paid_InvoicetoCall_Book_Invoice_Activity, Call_Book_Invoice_ActivitytoActivityFinal, reset);
+		Call_Create_Invoice_Activity: Action(TRUE, (container.olc.OLC_DC_StateMachineobj.Created = DP_Created_True), InitialtoCall_Create_Invoice_Activity, Call_Create_Invoice_ActivitytoSend_Transmit_Invoice, reset);
+		ActivityFinal: EndPoint(controlFlowOut.backwardSignal, Call_Book_Invoice_ActivitytoActivityFinal, reset);
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoCall_Create_Invoice_Activity, reset);
+		Send_Transmit_Invoice: SendAction((container.olc.OLC_DC_StateMachineobj.Created = DP_Created_True), (container.olc.OLC_DC_StateMachineobj.Transmitted = DP_Transmitted_True), Call_Create_Invoice_ActivitytoSend_Transmit_Invoice, Send_Transmit_InvoicetoReceive_Paid_Invoice, reset);
+		Receive_Paid_Invoice: ReceiveAction((container.olc.OLC_DC_StateMachineobj.Transmitted = DP_Transmitted_True), (container.olc.OLC_DC_StateMachineobj.PaymentReceived = DP_Payment_Received_True), container.trig8, Send_Transmit_InvoicetoReceive_Paid_Invoice, Receive_Paid_InvoicetoCall_Book_Invoice_Activity, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := ActivityFinal.FINISHED;
+
+	DEFINE
+		trig0 := Call_Book_Invoice_Activity.BEH;
+		trig1 := Call_Create_Invoice_Activity.BEH;
+		trig2 := Send_Transmit_Invoice.TRIGGEROUT;
+		trig3 := Receive_Paid_Invoice.BEH;
+		trig4 := Send_Transmit_Invoice.TRIGGEROUT;
+		SUB_ACTIVE := Call_Book_Invoice_Activity.ACTIVE | Call_Create_Invoice_Activity.ACTIVE | ActivityFinal.ACTIVE | Initial.ACTIVE | Send_Transmit_Invoice.ACTIVE | Receive_Paid_Invoice.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_fRw5kC2-EeunIrWJiW4dhw" name="OLC_charging_station">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_fS_BkC2-EeunIrWJiW4dhw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_pfhHAC2-EeunIrWJiW4dhw" name="OCL_charging_station_StateMachine">
+    <nestedClassifier xmi:type="uml:Signal" xmi:id="_faMgAC3CEeunIrWJiW4dhw" name="SigCableConnected"/>
+    <nestedClassifier xmi:type="uml:Signal" xmi:id="_7PUQYFRcEeuvSIpoIJb8KA" name="SigAuthChecked"/>
+    <nestedClassifier xmi:type="uml:Signal" xmi:id="_x8Ft4C3CEeunIrWJiW4dhw" name="SigVoltageApplied"/>
+    <nestedClassifier xmi:type="uml:Signal" xmi:id="_EZut4C3DEeunIrWJiW4dhw" name="SigChargingFinished"/>
+    <nestedClassifier xmi:type="uml:Signal" xmi:id="_UROLAC3DEeunIrWJiW4dhw" name="SigCableDisconnected"/>
+    <region xmi:type="uml:Region" xmi:id="_sUJx0C2-EeunIrWJiW4dhw" name="Cycle_error">
+      <transition xmi:type="uml:Transition" xmi:id="_0VIJMC2_EeunIrWJiW4dhw" source="_N1bJEC2_EeunIrWJiW4dhw" target="_OxJxgC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_Satx0C3CEeunIrWJiW4dhw" name="TrigCableConnected" event="_fp6XAC3CEeunIrWJiW4dhw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_1EBPgC2_EeunIrWJiW4dhw" source="_WRao8FRWEeuvSIpoIJb8KA" target="_PdkLkC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_oWP1AC3CEeunIrWJiW4dhw" name="TrigVoltageApplied" event="_yeVfUC3CEeunIrWJiW4dhw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_1ksToC2_EeunIrWJiW4dhw" source="_PdkLkC2_EeunIrWJiW4dhw" target="_mC29cC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_E9qhYC3DEeunIrWJiW4dhw" name="TrigChargingFinished" event="_ExnpcC3DEeunIrWJiW4dhw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_2NRWkC2_EeunIrWJiW4dhw" source="_mC29cC2_EeunIrWJiW4dhw" target="_rQvXkC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_V_4FMC3DEeunIrWJiW4dhw" name="TrigCableDisconnected" event="_QPI1oC3DEeunIrWJiW4dhw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_20P3AC2_EeunIrWJiW4dhw" source="_rQvXkC2_EeunIrWJiW4dhw" target="_wcKTkC2_EeunIrWJiW4dhw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_3-k8IC2_EeunIrWJiW4dhw" source="_OxJxgC2_EeunIrWJiW4dhw" target="_rQvXkC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_eizIgC3DEeunIrWJiW4dhw" name="TrigCableDisconnected2" event="_QPI1oC3DEeunIrWJiW4dhw"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_jcC3MFRWEeuvSIpoIJb8KA" source="_OxJxgC2_EeunIrWJiW4dhw" target="_WRao8FRWEeuvSIpoIJb8KA">
+        <trigger xmi:type="uml:Trigger" xmi:id="_8zmGkFRcEeuvSIpoIJb8KA" name="TrigAuthChecked" event="_7mOUgFRcEeuvSIpoIJb8KA"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_bbyYcFTMEeuSce0SK5VwvA" source="_WRao8FRWEeuvSIpoIJb8KA" target="_rQvXkC2_EeunIrWJiW4dhw">
+        <trigger xmi:type="uml:Trigger" xmi:id="_eTQ74FTMEeuSce0SK5VwvA" name="TrigCableDisconnected3" event="_QPI1oC3DEeunIrWJiW4dhw"/>
+      </transition>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_N1bJEC2_EeunIrWJiW4dhw" name="Initial"/>
+      <subvertex xmi:type="uml:State" xmi:id="_OxJxgC2_EeunIrWJiW4dhw" name="Set_charging_cable_connected"/>
+      <subvertex xmi:type="uml:State" xmi:id="_PdkLkC2_EeunIrWJiW4dhw" name="Set_voltage_applied"/>
+      <subvertex xmi:type="uml:State" xmi:id="_mC29cC2_EeunIrWJiW4dhw" name="Set_charging_finished"/>
+      <subvertex xmi:type="uml:State" xmi:id="_rQvXkC2_EeunIrWJiW4dhw" name="Set_charging_cable_disconnected"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_wcKTkC2_EeunIrWJiW4dhw" name="FinalState"/>
+      <subvertex xmi:type="uml:State" xmi:id="_WRao8FRWEeuvSIpoIJb8KA" name="Set_auth_checked"/>
+    </region>
+    <region xmi:type="uml:Region" xmi:id="_OJ-nUC3AEeunIrWJiW4dhw" name="Cable">
+      <transition xmi:type="uml:Transition" xmi:id="_NclgYC3BEeunIrWJiW4dhw" source="_QaR2AC3AEeunIrWJiW4dhw" target="_R19w4C3AEeunIrWJiW4dhw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_OH7jcC3BEeunIrWJiW4dhw" name="Discon->Con" guard="_72YKkFTDEeuvSIpoIJb8KA" source="_R19w4C3AEeunIrWJiW4dhw" target="_ZtcDcC3AEeunIrWJiW4dhw">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_72YKkFTDEeuvSIpoIJb8KA" name="Constraint_Connect" constrainedElement="_OxJxgC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_72YKkVTDEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_O4Em8C3BEeunIrWJiW4dhw" name="Con->Discon" guard="_jirQ8C3FEeunIrWJiW4dhw" source="_ZtcDcC3AEeunIrWJiW4dhw" target="_R19w4C3AEeunIrWJiW4dhw">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_jirQ8C3FEeunIrWJiW4dhw" name="Constraint_Disconnected" constrainedElement="_rQvXkC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_qkGsUC3FEeunIrWJiW4dhw">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_QaR2AC3AEeunIrWJiW4dhw" name="Initial"/>
+      <subvertex xmi:type="uml:State" xmi:id="_R19w4C3AEeunIrWJiW4dhw" name="Charging_Station_Cabel_disconnected"/>
+      <subvertex xmi:type="uml:State" xmi:id="_ZtcDcC3AEeunIrWJiW4dhw" name="Charging_Station_Cabel_connected"/>
+    </region>
+    <region xmi:type="uml:Region" xmi:id="_hLB2YC3AEeunIrWJiW4dhw" name="Voltage">
+      <transition xmi:type="uml:Transition" xmi:id="_s44-8FTAEeuvSIpoIJb8KA" name="Unapp->App" guard="_7sbY0FTNEeuSce0SK5VwvA" source="_r_yzwFTAEeuvSIpoIJb8KA" target="_sUw-MFTAEeuvSIpoIJb8KA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_7sbY0FTNEeuSce0SK5VwvA" name="Constraint_apply" constrainedElement="_PdkLkC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_7sbY0VTNEeuSce0SK5VwvA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_WHGXQFTCEeuvSIpoIJb8KA" source="_zkoq8C3AEeunIrWJiW4dhw" target="_r_yzwFTAEeuvSIpoIJb8KA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_W84vwFTCEeuvSIpoIJb8KA" name="App->Unapp" guard="_JwxB0FTEEeuvSIpoIJb8KA" source="_sUw-MFTAEeuvSIpoIJb8KA" target="_r_yzwFTAEeuvSIpoIJb8KA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_JwxB0FTEEeuvSIpoIJb8KA" name="Constraint_unapply" constrainedElement="_mC29cC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_Nb7sAFTEEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_zkoq8C3AEeunIrWJiW4dhw" name="Initial"/>
+      <subvertex xmi:type="uml:State" xmi:id="_r_yzwFTAEeuvSIpoIJb8KA" name="Charging_Station_Voltage_unapplied"/>
+      <subvertex xmi:type="uml:State" xmi:id="_sUw-MFTAEeuvSIpoIJb8KA" name="Charging_Station_Voltage_applied"/>
+    </region>
+    <region xmi:type="uml:Region" xmi:id="_lP6ikFSYEeuvSIpoIJb8KA" name="Authorization">
+      <transition xmi:type="uml:Transition" xmi:id="_1b1QMFSbEeuvSIpoIJb8KA" name="Init->NotGranted" guard="_h3OysFScEeuvSIpoIJb8KA" source="_8DfVUFTKEeuSce0SK5VwvA" target="_u_PAMFSbEeuvSIpoIJb8KA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_h3OysFScEeuvSIpoIJb8KA" name="Constraint_NotGrant" constrainedElement="_WRao8FRWEeuvSIpoIJb8KA">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_lfsHIFScEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_8Jv5sFSbEeuvSIpoIJb8KA" name="Init->Granted" guard="_O4yLsFScEeuvSIpoIJb8KA" source="_8DfVUFTKEeuSce0SK5VwvA" target="_dXd4QFSbEeuvSIpoIJb8KA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_O4yLsFScEeuvSIpoIJb8KA" name="Constraint_granted" constrainedElement="_WRao8FRWEeuvSIpoIJb8KA">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_d8dmQFScEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="__em8sFSbEeuvSIpoIJb8KA" name="Granted->Init" guard="_2DM8wFScEeuvSIpoIJb8KA" source="_dXd4QFSbEeuvSIpoIJb8KA" target="_8DfVUFTKEeuSce0SK5VwvA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_2DM8wFScEeuvSIpoIJb8KA" name="Constraint_init" constrainedElement="_rQvXkC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_2DM8wVScEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_ECpvoFScEeuvSIpoIJb8KA" name="NotGranted->Init" guard="_AT6-oFSdEeuvSIpoIJb8KA" source="_u_PAMFSbEeuvSIpoIJb8KA" target="_8DfVUFTKEeuSce0SK5VwvA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_AT6-oFSdEeuvSIpoIJb8KA" name="Constraint_init" constrainedElement="_rQvXkC2_EeunIrWJiW4dhw">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_AT6-oVSdEeuvSIpoIJb8KA">
+            <language>OCL</language>
+            <body>true</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_HIhwEFTLEeuSce0SK5VwvA" source="_VEQE4FSbEeuvSIpoIJb8KA" target="_8DfVUFTKEeuSce0SK5VwvA"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_VEQE4FSbEeuvSIpoIJb8KA" name="Initial"/>
+      <subvertex xmi:type="uml:State" xmi:id="_dXd4QFSbEeuvSIpoIJb8KA" name="Charging_Station_Charging_granted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_u_PAMFSbEeuvSIpoIJb8KA" name="Charging_Station_Charging_not_granted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_8DfVUFTKEeuSce0SK5VwvA" name="Waiting"/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_fp6XAC3CEeunIrWJiW4dhw" name="EventCableConnected" signal="_faMgAC3CEeunIrWJiW4dhw"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_yeVfUC3CEeunIrWJiW4dhw" name="EventVoltageApplied" signal="_x8Ft4C3CEeunIrWJiW4dhw"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_ExnpcC3DEeunIrWJiW4dhw" name="EventChargingFinished" signal="_EZut4C3DEeunIrWJiW4dhw"/>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_QPI1oC3DEeunIrWJiW4dhw" name="EventCableDisconnected" signal="_UROLAC3DEeunIrWJiW4dhw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_1iU38C3GEeunIrWJiW4dhw" name="OCL_charging_station_class">
+    <ownedBehavior xmi:type="uml:Interaction" xmi:id="_Fw9v8FS6EeuvSIpoIJb8KA" name="CheckAuthBeh">
+      <action xmi:type="uml:SendSignalAction" xmi:id="_MXUY4FS6EeuvSIpoIJb8KA" signal="_7PUQYFRcEeuvSIpoIJb8KA">
+        <target xmi:type="uml:InputPin" xmi:id="_Pht4UFS6EeuvSIpoIJb8KA" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pht4UVS6EeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pht4UlS6EeuvSIpoIJb8KA" value="1"/>
+        </target>
+      </action>
+    </ownedBehavior>
+    <nestedClassifier xmi:type="uml:Interaction" xmi:id="_9cU6EC3GEeunIrWJiW4dhw" name="ConnectCableBeh">
+      <action xmi:type="uml:SendSignalAction" xmi:id="_ZLkBQC3HEeunIrWJiW4dhw" signal="_faMgAC3CEeunIrWJiW4dhw">
+        <target xmi:type="uml:InputPin" xmi:id="_ag2ZMC3HEeunIrWJiW4dhw" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dAGp4C3HEeunIrWJiW4dhw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dAIfEC3HEeunIrWJiW4dhw" value="1"/>
+        </target>
+      </action>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Interaction" xmi:id="_CKhukC3HEeunIrWJiW4dhw" name="DisconnectCableBeh">
+      <action xmi:type="uml:SendSignalAction" xmi:id="_gEZhUC3HEeunIrWJiW4dhw" signal="_UROLAC3DEeunIrWJiW4dhw">
+        <target xmi:type="uml:InputPin" xmi:id="_hIXfwC3HEeunIrWJiW4dhw" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_llkD0C3HEeunIrWJiW4dhw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llmgEC3HEeunIrWJiW4dhw" value="1"/>
+        </target>
+      </action>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Interaction" xmi:id="_FxenIC3HEeunIrWJiW4dhw" name="ApplyVoltageBeh">
+      <action xmi:type="uml:SendSignalAction" xmi:id="_neQDwC3HEeunIrWJiW4dhw" name="SendSignalAction1" signal="_x8Ft4C3CEeunIrWJiW4dhw">
+        <target xmi:type="uml:InputPin" xmi:id="_oT88sC3HEeunIrWJiW4dhw" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bHwywC3IEeunIrWJiW4dhw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bHyA4C3IEeunIrWJiW4dhw" value="1"/>
+        </target>
+      </action>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Interaction" xmi:id="_RCEKkC3HEeunIrWJiW4dhw" name="UnapplyVoltageBeh">
+      <action xmi:type="uml:SendSignalAction" xmi:id="_OjFKMC3IEeunIrWJiW4dhw" signal="_EZut4C3DEeunIrWJiW4dhw">
+        <target xmi:type="uml:InputPin" xmi:id="_P7gVsC3IEeunIrWJiW4dhw" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UpuYUC3IEeunIrWJiW4dhw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UpvmcC3IEeunIrWJiW4dhw" value="1"/>
+        </target>
+      </action>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_7mOUgFRcEeuvSIpoIJb8KA" name="EventAuthChecked" signal="_7PUQYFRcEeuvSIpoIJb8KA"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_qm0VwFyvEeuGANEPbvMd3Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qm0VwVyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>

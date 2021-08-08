@@ -1,0 +1,42 @@
+#include "../modules.h"
+#include "../Property_state_machine.h"
+#include "activity_all.uml.smv"
+
+
+MODULE ObjectLifeCycle(container)
+	VAR
+		OLC_Customer_StateMachineobj : OLC_Customer_StateMachine(container);
+		OLC_DC_StateMachineobj : OLC_DC_StateMachine(container);
+	
+	FROZENVAR
+		amount9: 0..200;
+	
+	DEFINE
+		ERROR := OLC_Customer_StateMachineobj.ERROR | OLC_DC_StateMachineobj.ERROR;
+
+MODULE main
+	VAR
+		reset : boolean;
+		forward : ControlFlow();
+		back : ControlFlow();
+		
+		activator : MainActivator(forward);
+		mainAct : MainActivity(forward, back, self, reset);
+		terminator : MainTerminator(back);
+		
+		olc : ObjectLifeCycle(self);
+		
+		  	
+	ASSIGN
+		reset := FALSE;
+	
+	DEFINE
+		trig0 := mainAct.trig0;
+		trig1 := mainAct.trig1;
+		trig2 := mainAct.trig2;
+		trig3 := mainAct.trig3;
+		trig4 := mainAct.trig4;
+		trig5 := mainAct.trig5;
+		trig6 := mainAct.trig6;
+		trig7 := mainAct.trig7;
+		trig8 := mainAct.trig8;

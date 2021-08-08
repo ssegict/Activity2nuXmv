@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:semanticSepcification="http://at.ac.tuwien.ict.semantic.profile" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://at.ac.tuwien.ict.semantic.profile /at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg">
+  <uml:Model xmi:id="_cGe8QC2xEeunIrWJiW4dhw" name="main">
+    <packageImport xmi:id="_cHaJUC2xEeunIrWJiW4dhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_d45VEC2xEeunIrWJiW4dhw" name="MainActivity" node="_jzJF8C2xEeunIrWJiW4dhw _lYkLoC2xEeunIrWJiW4dhw _AnOwsC9EEeuga4oeM-Ka6w _FtgG8C9EEeuga4oeM-Ka6w _LF69IC9EEeuga4oeM-Ka6w _WjArgC9EEeuga4oeM-Ka6w">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_lNHIcC9EEeuga4oeM-Ka6w" target="_LF69IC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_lxyi0C9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_LF69IC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mVE2EC9EEeuga4oeM-Ka6w" target="_WjArgC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_m5w3gC9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_WjArgC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_qVA2YC9EEeuga4oeM-Ka6w" target="_lYkLoC2xEeunIrWJiW4dhw" source="_FtgG8C9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_rKH5cC9EEeuga4oeM-Ka6w" target="_AnOwsC9EEeuga4oeM-Ka6w" source="_jzJF8C2xEeunIrWJiW4dhw"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_jzJF8C2xEeunIrWJiW4dhw" name="Initial" outgoing="_rKH5cC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_lYkLoC2xEeunIrWJiW4dhw" name="FinalNode" incoming="_qVA2YC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_AnOwsC9EEeuga4oeM-Ka6w" name="Fork" incoming="_rKH5cC9EEeuga4oeM-Ka6w" outgoing="_lNHIcC9EEeuga4oeM-Ka6w _mVE2EC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_FtgG8C9EEeuga4oeM-Ka6w" name="Join" incoming="_lxyi0C9EEeuga4oeM-Ka6w _m5w3gC9EEeuga4oeM-Ka6w" outgoing="_qVA2YC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_LF69IC9EEeuga4oeM-Ka6w" name="Call_Delivering_Company_Process" incoming="_lNHIcC9EEeuga4oeM-Ka6w" outgoing="_lxyi0C9EEeuga4oeM-Ka6w" behavior="_8xKNIC86EeuZGJ2ngK3buQ"/>
+      <node xmi:type="uml:CallBehaviorAction" xmi:id="_WjArgC9EEeuga4oeM-Ka6w" name="Call_Customer_Process" incoming="_mVE2EC9EEeuga4oeM-Ka6w" outgoing="_m5w3gC9EEeuga4oeM-Ka6w" behavior="_8BTpYC3NEeunIrWJiW4dhw"/>
+    </packagedElement>
+    <profileApplication xmi:id="_tBF_0FyvEeuGANEPbvMd3Q">
+      <eAnnotations xmi:id="_tBF_0VyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg"/>
+      </eAnnotations>
+      <appliedProfile href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <uml:Model xmi:id="_fRw5kC2-EeunIrWJiW4dhw" name="OLC_Customer">
+    <packageImport xmi:id="_fS_BkC2-EeunIrWJiW4dhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="_pfhHAC2-EeunIrWJiW4dhw" name="OLC_Customer_StateMachine">
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_faMgAC3CEeunIrWJiW4dhw" name="SigSetReceived"/>
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_7PUQYFRcEeuvSIpoIJb8KA" name="SigSetPaid"/>
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_x8Ft4C3CEeunIrWJiW4dhw" name="SigSetAuthorized"/>
+      <region xmi:id="_sUJx0C2-EeunIrWJiW4dhw" name="Cycle_error">
+        <transition xmi:id="_0VIJMC2_EeunIrWJiW4dhw" source="_N1bJEC2_EeunIrWJiW4dhw" target="_OxJxgC2_EeunIrWJiW4dhw">
+          <trigger xmi:id="_Satx0C3CEeunIrWJiW4dhw" name="TrigSetReceived" event="_fp6XAC3CEeunIrWJiW4dhw"/>
+        </transition>
+        <transition xmi:id="_1EBPgC2_EeunIrWJiW4dhw" source="_OxJxgC2_EeunIrWJiW4dhw" target="_PdkLkC2_EeunIrWJiW4dhw">
+          <trigger xmi:id="_oWP1AC3CEeunIrWJiW4dhw" name="TrigSetAuthorized" event="_yeVfUC3CEeunIrWJiW4dhw"/>
+        </transition>
+        <transition xmi:id="_jcC3MFRWEeuvSIpoIJb8KA" source="_PdkLkC2_EeunIrWJiW4dhw" target="_WRao8FRWEeuvSIpoIJb8KA">
+          <trigger xmi:id="_8zmGkFRcEeuvSIpoIJb8KA" name="TrigSetPaid" event="_7mOUgFRcEeuvSIpoIJb8KA"/>
+        </transition>
+        <transition xmi:id="_Qx850ItwEeuNdOBo8aJE0g" source="_WRao8FRWEeuvSIpoIJb8KA" target="_wcKTkC2_EeunIrWJiW4dhw"/>
+        <transition xmi:id="_TlbHAItwEeuNdOBo8aJE0g" source="_OxJxgC2_EeunIrWJiW4dhw" target="_WRao8FRWEeuvSIpoIJb8KA">
+          <trigger xmi:id="_qNv-wItwEeuNdOBo8aJE0g" name="TrigSetPaid" event="_7mOUgFRcEeuvSIpoIJb8KA"/>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_N1bJEC2_EeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_OxJxgC2_EeunIrWJiW4dhw" name="Set_Received"/>
+        <subvertex xmi:type="uml:State" xmi:id="_PdkLkC2_EeunIrWJiW4dhw" name="Set_Authorized"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_wcKTkC2_EeunIrWJiW4dhw" name="FinalState"/>
+        <subvertex xmi:type="uml:State" xmi:id="_WRao8FRWEeuvSIpoIJb8KA" name="Set_Paid"/>
+      </region>
+      <region xmi:id="_OJ-nUC3AEeunIrWJiW4dhw" name="Received">
+        <transition xmi:id="_NclgYC3BEeunIrWJiW4dhw" source="_QaR2AC3AEeunIrWJiW4dhw" target="_R19w4C3AEeunIrWJiW4dhw"/>
+        <transition xmi:id="_OH7jcC3BEeunIrWJiW4dhw" name="NotReceived->Received" guard="_72YKkFTDEeuvSIpoIJb8KA" source="_R19w4C3AEeunIrWJiW4dhw" target="_ZtcDcC3AEeunIrWJiW4dhw">
+          <ownedRule xmi:id="_72YKkFTDEeuvSIpoIJb8KA" name="Constraint_SetReceived" constrainedElement="_OxJxgC2_EeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_72YKkVTDEeuvSIpoIJb8KA">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_QaR2AC3AEeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_R19w4C3AEeunIrWJiW4dhw" name="CP_Received_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ZtcDcC3AEeunIrWJiW4dhw" name="CP_Received_True"/>
+      </region>
+      <region xmi:id="_hLB2YC3AEeunIrWJiW4dhw" name="Authorized">
+        <transition xmi:id="_s44-8FTAEeuvSIpoIJb8KA" name="NotAuthorized->Authorized" guard="_7sbY0FTNEeuSce0SK5VwvA" source="_r_yzwFTAEeuvSIpoIJb8KA" target="_sUw-MFTAEeuvSIpoIJb8KA">
+          <ownedRule xmi:id="_7sbY0FTNEeuSce0SK5VwvA" name="Constraint_SetAuthorized" constrainedElement="_PdkLkC2_EeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_7sbY0VTNEeuSce0SK5VwvA">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <transition xmi:id="_WHGXQFTCEeuvSIpoIJb8KA" source="_zkoq8C3AEeunIrWJiW4dhw" target="_r_yzwFTAEeuvSIpoIJb8KA"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_zkoq8C3AEeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_r_yzwFTAEeuvSIpoIJb8KA" name="CP_Authorized_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_sUw-MFTAEeuvSIpoIJb8KA" name="CP_Authorized_True"/>
+      </region>
+      <region xmi:id="_lP6ikFSYEeuvSIpoIJb8KA" name="Paid">
+        <transition xmi:id="_8Jv5sFSbEeuvSIpoIJb8KA" name="NotPaid->Paid" guard="_O4yLsFScEeuvSIpoIJb8KA" source="_8DfVUFTKEeuSce0SK5VwvA" target="_dXd4QFSbEeuvSIpoIJb8KA">
+          <ownedRule xmi:id="_O4yLsFScEeuvSIpoIJb8KA" name="Constraint_SetPaid" constrainedElement="_WRao8FRWEeuvSIpoIJb8KA">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_d8dmQFScEeuvSIpoIJb8KA">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <transition xmi:id="_HIhwEFTLEeuSce0SK5VwvA" source="_VEQE4FSbEeuvSIpoIJb8KA" target="_8DfVUFTKEeuSce0SK5VwvA"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_VEQE4FSbEeuvSIpoIJb8KA" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_dXd4QFSbEeuvSIpoIJb8KA" name="CP_Paid_True"/>
+        <subvertex xmi:type="uml:State" xmi:id="_8DfVUFTKEeuSce0SK5VwvA" name="CP_Paid_False"/>
+      </region>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_fp6XAC3CEeunIrWJiW4dhw" name="EventSetReceived" signal="_faMgAC3CEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_yeVfUC3CEeunIrWJiW4dhw" name="EventSetAuthorized" signal="_x8Ft4C3CEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1iU38C3GEeunIrWJiW4dhw" name="OCL_Customer_Class">
+      <ownedAttribute xmi:id="_qtstUIt0EeuNdOBo8aJE0g" name="amount" isReadOnly="true">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GTc5oIt7EeuNdOBo8aJE0g"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="_HzM1IIt7EeuNdOBo8aJE0g" value="200"/>
+      </ownedAttribute>
+      <ownedBehavior xmi:type="uml:Interaction" xmi:id="_Fw9v8FS6EeuvSIpoIJb8KA" name="InvoiceReceivedBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_MXUY4FS6EeuvSIpoIJb8KA" signal="_faMgAC3CEeunIrWJiW4dhw">
+          <target xmi:id="_Pht4UFS6EeuvSIpoIJb8KA" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pht4UVS6EeuvSIpoIJb8KA" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pht4UlS6EeuvSIpoIJb8KA" value="1"/>
+          </target>
+        </action>
+      </ownedBehavior>
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_9cU6EC3GEeunIrWJiW4dhw" name="AuthorizeInvoiceBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_ZLkBQC3HEeunIrWJiW4dhw" signal="_x8Ft4C3CEeunIrWJiW4dhw">
+          <target xmi:id="_ag2ZMC3HEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dAGp4C3HEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dAIfEC3HEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_CKhukC3HEeunIrWJiW4dhw" name="PayInvoiceBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_gEZhUC3HEeunIrWJiW4dhw" signal="_7PUQYFRcEeuvSIpoIJb8KA">
+          <target xmi:id="_hIXfwC3HEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_llkD0C3HEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llmgEC3HEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_7mOUgFRcEeuvSIpoIJb8KA" name="EventSetPaid" signal="_7PUQYFRcEeuvSIpoIJb8KA"/>
+  </uml:Model>
+  <uml:Model xmi:id="_Q3HDIC2YEeunIrWJiW4dhw" name="OLC_DC">
+    <packageImport xmi:id="_Q4GhoC2YEeunIrWJiW4dhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="_nN1NgC2YEeunIrWJiW4dhw" name="OLC_DC_StateMachine">
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_-2eLYC2bEeunIrWJiW4dhw" name="SigSetCreated"/>
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_pofVQC2cEeunIrWJiW4dhw" name="SigSetTransmitted"/>
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="_1yw5wC2cEeunIrWJiW4dhw" name="SigSetPaymentReceived"/>
+      <nestedClassifier xmi:type="uml:Signal" xmi:id="__S2I4C2cEeunIrWJiW4dhw" name="SigSetBooked"/>
+      <region xmi:id="_ZQiWwC2ZEeunIrWJiW4dhw" name="Cycle_error">
+        <transition xmi:id="_5Rlb8C2aEeunIrWJiW4dhw" source="_sGKY8C2ZEeunIrWJiW4dhw" target="_vaBWYC2ZEeunIrWJiW4dhw">
+          <trigger xmi:id="__KlaMC2bEeunIrWJiW4dhw" name="TrigSetCreated" event="__Ccx4C2bEeunIrWJiW4dhw"/>
+        </transition>
+        <transition xmi:id="_82Ju4C2aEeunIrWJiW4dhw" source="_jYXF4C2aEeunIrWJiW4dhw" target="_o65hYC2aEeunIrWJiW4dhw"/>
+        <transition xmi:id="_7441YC2aEeunIrWJiW4dhw" source="_SqL4YC2aEeunIrWJiW4dhw" target="_jYXF4C2aEeunIrWJiW4dhw">
+          <trigger xmi:id="__hjTQC2cEeunIrWJiW4dhw" name="TrigSetBooked" event="_8qMroC2cEeunIrWJiW4dhw"/>
+        </transition>
+        <transition xmi:id="_7YooAC2aEeunIrWJiW4dhw" source="_LhHj8C2aEeunIrWJiW4dhw" target="_SqL4YC2aEeunIrWJiW4dhw">
+          <trigger xmi:id="_2I1QYC2cEeunIrWJiW4dhw" name="TrigSetPaymentReceived" event="_1-SNQC2cEeunIrWJiW4dhw"/>
+        </transition>
+        <transition xmi:id="_bAwwgFSkEeuvSIpoIJb8KA" source="_vaBWYC2ZEeunIrWJiW4dhw" target="_LhHj8C2aEeunIrWJiW4dhw">
+          <trigger xmi:id="_sHVP4FSkEeuvSIpoIJb8KA" name="TrigSetTransmitted" event="_r-2CQFSkEeuvSIpoIJb8KA"/>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_sGKY8C2ZEeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_vaBWYC2ZEeunIrWJiW4dhw" name="Set_Created"/>
+        <subvertex xmi:type="uml:State" xmi:id="_LhHj8C2aEeunIrWJiW4dhw" name="Set_Transmitted"/>
+        <subvertex xmi:type="uml:State" xmi:id="_SqL4YC2aEeunIrWJiW4dhw" name="Set_Payment_Received"/>
+        <subvertex xmi:type="uml:State" xmi:id="_jYXF4C2aEeunIrWJiW4dhw" name="Set_Booked"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_o65hYC2aEeunIrWJiW4dhw" name="Final"/>
+      </region>
+      <region xmi:id="_nS6BIC2gEeunIrWJiW4dhw" name="Created">
+        <transition xmi:id="_Jb9KEC2hEeunIrWJiW4dhw" source="_pkaJsC2gEeunIrWJiW4dhw" target="_qU-D8C2gEeunIrWJiW4dhw"/>
+        <transition xmi:id="_18n-MFSdEeuvSIpoIJb8KA" name="NotCreated->Created" guard="_BkoCcFSmEeuvSIpoIJb8KA" source="_qU-D8C2gEeunIrWJiW4dhw" target="_qxLe0C2gEeunIrWJiW4dhw">
+          <ownedRule xmi:id="_BkoCcFSmEeuvSIpoIJb8KA" name="Constraint_created" constrainedElement="_vaBWYC2ZEeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_BkoCcVSmEeuvSIpoIJb8KA">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_pkaJsC2gEeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_qU-D8C2gEeunIrWJiW4dhw" name="DP_Created_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_qxLe0C2gEeunIrWJiW4dhw" name="DP_Created_True"/>
+      </region>
+      <region xmi:id="_05GxEC2gEeunIrWJiW4dhw" name="Transmitted">
+        <transition xmi:id="_L16rEC2hEeunIrWJiW4dhw" source="_8ONWYC2gEeunIrWJiW4dhw" target="_-RcZcC2gEeunIrWJiW4dhw"/>
+        <transition xmi:id="_Qs3DgFS_EeuvSIpoIJb8KA" name="NotTransmitted->Transmitted" guard="_cSaKUFS_EeuvSIpoIJb8KA" source="_-RcZcC2gEeunIrWJiW4dhw" target="_-pklkC2gEeunIrWJiW4dhw">
+          <ownedRule xmi:id="_cSaKUFS_EeuvSIpoIJb8KA" name="Constraint_Transmitted" constrainedElement="_LhHj8C2aEeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_cSaKUVS_EeuvSIpoIJb8KA">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_8ONWYC2gEeunIrWJiW4dhw" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_-RcZcC2gEeunIrWJiW4dhw" name="DP_Transmitted_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_-pklkC2gEeunIrWJiW4dhw" name="DP_Transmitted_True"/>
+      </region>
+      <region xmi:id="_86RFEItsEeuNdOBo8aJE0g" name="Booked">
+        <transition xmi:id="_F5nJMItuEeuNdOBo8aJE0g" source="_ALUJoItuEeuNdOBo8aJE0g" target="_BcjIAItuEeuNdOBo8aJE0g"/>
+        <transition xmi:id="_GryNAItuEeuNdOBo8aJE0g" name="NotBooked->Booked" guard="_PEIYAItuEeuNdOBo8aJE0g" source="_BcjIAItuEeuNdOBo8aJE0g" target="_DytuIItuEeuNdOBo8aJE0g">
+          <ownedRule xmi:id="_PEIYAItuEeuNdOBo8aJE0g" name="Contraint_Booked" constrainedElement="_jYXF4C2aEeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_PEIYAYtuEeuNdOBo8aJE0g" name="true">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ALUJoItuEeuNdOBo8aJE0g" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_BcjIAItuEeuNdOBo8aJE0g" name="DP_Booked_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_DytuIItuEeuNdOBo8aJE0g" name="DP_Booked_True"/>
+      </region>
+      <region xmi:id="__LBmwItsEeuNdOBo8aJE0g" name="PaymentReceived">
+        <transition xmi:id="_T8XHsIttEeuNdOBo8aJE0g" source="_HXeq0IttEeuNdOBo8aJE0g" target="_JQ98AIttEeuNdOBo8aJE0g"/>
+        <transition xmi:id="_WwVrMIttEeuNdOBo8aJE0g" name="NotPayReceived->PayReceived" guard="_siwOoIttEeuNdOBo8aJE0g" source="_JQ98AIttEeuNdOBo8aJE0g" target="_Jo4FsIttEeuNdOBo8aJE0g">
+          <ownedRule xmi:id="_siwOoIttEeuNdOBo8aJE0g" name="Contraint_Payment_Received" constrainedElement="_SqL4YC2aEeunIrWJiW4dhw">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_7t1RsIttEeuNdOBo8aJE0g" name="true">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+        </transition>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_HXeq0IttEeuNdOBo8aJE0g" name="Initial"/>
+        <subvertex xmi:type="uml:State" xmi:id="_JQ98AIttEeuNdOBo8aJE0g" name="DP_Payment_Received_False"/>
+        <subvertex xmi:type="uml:State" xmi:id="_Jo4FsIttEeuNdOBo8aJE0g" name="DP_Payment_Received_True"/>
+      </region>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="__Ccx4C2bEeunIrWJiW4dhw" name="EventSetCreated" signal="_-2eLYC2bEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_1-SNQC2cEeunIrWJiW4dhw" name="EventPaymentReceived" signal="_1yw5wC2cEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_8qMroC2cEeunIrWJiW4dhw" name="EventSetBooked" signal="__S2I4C2cEeunIrWJiW4dhw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qRkGcC2nEeunIrWJiW4dhw" name="OLC_DC">
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_BhPSEC2oEeunIrWJiW4dhw" name="SetCreatedBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_KvB3UC2oEeunIrWJiW4dhw" signal="_-2eLYC2bEeunIrWJiW4dhw">
+          <target xmi:id="_VfJK8C2oEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Z24nQC2oEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Z251YC2oEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_kvoScC2oEeunIrWJiW4dhw" name="SetTransmittedBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_ojgzwC2oEeunIrWJiW4dhw" signal="_pofVQC2cEeunIrWJiW4dhw">
+          <target xmi:id="_pojJMC2oEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rdGQAC2oEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rdG3EC2oEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_87LToC2sEeunIrWJiW4dhw" name="SetPaymentReceivedBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_DV57YC2tEeunIrWJiW4dhw" signal="_1yw5wC2cEeunIrWJiW4dhw">
+          <target xmi:id="_IMEZEC2tEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_earJQC2tEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_easXYC2tEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Interaction" xmi:id="_pdvOEC2tEeunIrWJiW4dhw" name="SetBookedBeh">
+        <action xmi:type="uml:SendSignalAction" xmi:id="_r91MQC2tEeunIrWJiW4dhw" signal="__S2I4C2cEeunIrWJiW4dhw">
+          <target xmi:id="_s2mAQC2tEeunIrWJiW4dhw" name="target">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MF4GwC2uEeunIrWJiW4dhw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MF5U4C2uEeunIrWJiW4dhw" value="1"/>
+          </target>
+        </action>
+      </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_r-2CQFSkEeuvSIpoIJb8KA" name="EventSetTransmitted" signal="_pofVQC2cEeunIrWJiW4dhw"/>
+  </uml:Model>
+  <uml:Model xmi:id="_41spAC3NEeunIrWJiW4dhw" name="Process_DP_Customer">
+    <packageImport xmi:id="_424UwC3NEeunIrWJiW4dhw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_8BTpYC3NEeunIrWJiW4dhw" name="Customer_Process" visibility="public" node="_R3RQEC3OEeunIrWJiW4dhw _kw_vIC3OEeunIrWJiW4dhw _-19h0C8LEeu38d3zxHUFKw _DXU0MC8MEeu38d3zxHUFKw _LqOo0FRLEeuvSIpoIJb8KA _wZ0gwFRMEeuvSIpoIJb8KA _rxErUItzEeuNdOBo8aJE0g">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_MVYUUC8MEeu38d3zxHUFKw" target="_kw_vIC3OEeunIrWJiW4dhw" source="_R3RQEC3OEeunIrWJiW4dhw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_cs8_sC8MEeu38d3zxHUFKw" target="_rxErUItzEeuNdOBo8aJE0g" source="_-19h0C8LEeu38d3zxHUFKw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_DmCTcFRMEeuvSIpoIJb8KA" name="AuthorizationRequired" target="_wZ0gwFRMEeuvSIpoIJb8KA" source="_LqOo0FRLEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Fx344FRMEeuvSIpoIJb8KA" target="_LqOo0FRLEeuvSIpoIJb8KA" source="_kw_vIC3OEeunIrWJiW4dhw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QTh5wFRMEeuvSIpoIJb8KA" name="NoAuthorizationRequired" target="_-19h0C8LEeu38d3zxHUFKw" source="_LqOo0FRLEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_XNiV0ItzEeuNdOBo8aJE0g" target="_-19h0C8LEeu38d3zxHUFKw" source="_wZ0gwFRMEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xjbEcItzEeuNdOBo8aJE0g" target="_DXU0MC8MEeu38d3zxHUFKw" source="_rxErUItzEeuNdOBo8aJE0g"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_R3RQEC3OEeunIrWJiW4dhw" name="Initial" outgoing="_MVYUUC8MEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_kw_vIC3OEeunIrWJiW4dhw" name="Receive_Invoice" incoming="_MVYUUC8MEeu38d3zxHUFKw" outgoing="_Fx344FRMEeuvSIpoIJb8KA">
+        <result xmi:id="_A3_1UFRLEeuvSIpoIJb8KA" name="result" type="_FpRTUFRIEeuvSIpoIJb8KA">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_A4I_QVRLEeuvSIpoIJb8KA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A4EGwFRLEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A4FU4FRLEeuvSIpoIJb8KA" value="1"/>
+        </result>
+        <trigger xmi:id="_PcQFAC8UEeu38d3zxHUFKw" name="TrigTransmitInvoice" event="_POy30C8UEeu38d3zxHUFKw"/>
+      </node>
+      <node xmi:type="uml:MergeNode" xmi:id="_-19h0C8LEeu38d3zxHUFKw" name="Merge" incoming="_QTh5wFRMEeuvSIpoIJb8KA _XNiV0ItzEeuNdOBo8aJE0g" outgoing="_cs8_sC8MEeu38d3zxHUFKw"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_DXU0MC8MEeu38d3zxHUFKw" name="FinalNode" incoming="_xjbEcItzEeuNdOBo8aJE0g"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_LqOo0FRLEeuvSIpoIJb8KA" name="DecAuthorizeOrNot" incoming="_Fx344FRMEeuvSIpoIJb8KA" outgoing="_DmCTcFRMEeuvSIpoIJb8KA _QTh5wFRMEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_wZ0gwFRMEeuvSIpoIJb8KA" name="Authorize_Invoice" incoming="_DmCTcFRMEeuvSIpoIJb8KA" outgoing="_XNiV0ItzEeuNdOBo8aJE0g"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_rxErUItzEeuNdOBo8aJE0g" name="Send_Paid_Invoice" incoming="_cs8_sC8MEeu38d3zxHUFKw" outgoing="_xjbEcItzEeuNdOBo8aJE0g" signal="_bQgFAFRJEeuvSIpoIJb8KA">
+        <target xmi:id="_rxErUYtzEeuNdOBo8aJE0g" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rxErUotzEeuNdOBo8aJE0g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rxErU4tzEeuNdOBo8aJE0g" value="1"/>
+        </target>
+      </node>
+    </packagedElement>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_POy30C8UEeu38d3zxHUFKw" name="EventTransmitInvoice" signal="_FpRTUFRIEeuvSIpoIJb8KA"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_8xKNIC86EeuZGJ2ngK3buQ" name="Delivering_Company_Process" node="_1f9jMDMmEeuRaPPmfbSV2w _VBRfwDMlEeuRaPPmfbSV2w _CVl0IC89EeuZGJ2ngK3buQ _5opaEFRHEeuvSIpoIJb8KA _B6XYoFRIEeuvSIpoIJb8KA _SjmFUItqEeuNdOBo8aJE0g">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_V7VMkFRIEeuvSIpoIJb8KA" target="_B6XYoFRIEeuvSIpoIJb8KA" source="_VBRfwDMlEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_WU7YUFRIEeuvSIpoIJb8KA" target="_VBRfwDMlEeuRaPPmfbSV2w" source="_5opaEFRHEeuvSIpoIJb8KA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QNFlcFRKEeuvSIpoIJb8KA" target="_1f9jMDMmEeuRaPPmfbSV2w" source="_SjmFUItqEeuNdOBo8aJE0g"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_RLHT8FRKEeuvSIpoIJb8KA" target="_CVl0IC89EeuZGJ2ngK3buQ" source="_1f9jMDMmEeuRaPPmfbSV2w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dSreMItqEeuNdOBo8aJE0g" target="_SjmFUItqEeuNdOBo8aJE0g" source="_B6XYoFRIEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_CVl0IC89EeuZGJ2ngK3buQ" name="ActivityFinal" incoming="_RLHT8FRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_VBRfwDMlEeuRaPPmfbSV2w" name="Call_Create_Invoice_Activity" incoming="_WU7YUFRIEeuvSIpoIJb8KA" outgoing="_V7VMkFRIEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_1f9jMDMmEeuRaPPmfbSV2w" name="Call_Book_Invoice_Activity" incoming="_QNFlcFRKEeuvSIpoIJb8KA" outgoing="_RLHT8FRKEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_5opaEFRHEeuvSIpoIJb8KA" name="Initial" outgoing="_WU7YUFRIEeuvSIpoIJb8KA"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_B6XYoFRIEeuvSIpoIJb8KA" name="Send_Transmit_Invoice" incoming="_V7VMkFRIEeuvSIpoIJb8KA" outgoing="_dSreMItqEeuNdOBo8aJE0g" signal="_FpRTUFRIEeuvSIpoIJb8KA">
+        <target xmi:id="_F6ci4FRIEeuvSIpoIJb8KA" name="target">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F6ci4VRIEeuvSIpoIJb8KA" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F6ci4lRIEeuvSIpoIJb8KA" value="1"/>
+        </target>
+      </node>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_SjmFUItqEeuNdOBo8aJE0g" name="Receive_Paid_Invoice" incoming="_dSreMItqEeuNdOBo8aJE0g" outgoing="_QNFlcFRKEeuvSIpoIJb8KA">
+        <result xmi:id="_SjmFUYtqEeuNdOBo8aJE0g" name="result" type="_bQgFAFRJEeuvSIpoIJb8KA">
+          <upperBound xmi:type="uml:LiteralInteger" xmi:id="_SjmFUotqEeuNdOBo8aJE0g" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SjmFU4tqEeuNdOBo8aJE0g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SjmFVItqEeuNdOBo8aJE0g" value="1"/>
+        </result>
+        <trigger xmi:id="_SjmFVYtqEeuNdOBo8aJE0g" name="TrigPaidInvoice" event="_p204YFRNEeuvSIpoIJb8KA"/>
+      </node>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_FpRTUFRIEeuvSIpoIJb8KA" name="SigTransmitInvoice"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_bQgFAFRJEeuvSIpoIJb8KA" name="SigPaidInvoice"/>
+    <packagedElement xmi:type="uml:SignalEvent" xmi:id="_p204YFRNEeuvSIpoIJb8KA" name="EventPaidInvoice" signal="_bQgFAFRJEeuvSIpoIJb8KA"/>
+    <profileApplication xmi:id="_m0q50FyvEeuGANEPbvMd3Q">
+      <eAnnotations xmi:id="_m0q50VyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_yRphQFvwEeu02utovL8vPg"/>
+      </eAnnotations>
+      <appliedProfile href="/at.ac.tuwien.ac.at.umlprofile/semanticSpecification.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_oNFqkDO4EeuRaPPmfbSV2w" base_Action="_kw_vIC3OEeunIrWJiW4dhw" objectlifecycleBehavior="_Fw9v8FS6EeuvSIpoIJb8KA">
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_vtIpoOuZEeukSK3JniKtFQ" vertex="_ZtcDcC3AEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_s3-VMFRNEeuvSIpoIJb8KA" base_Action="_wZ0gwFRMEeuvSIpoIJb8KA" objectlifecycleBehavior="_9cU6EC3GEeunIrWJiW4dhw">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_2r7AsOuZEeukSK3JniKtFQ" vertex="_ZtcDcC3AEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_5w838OuZEeukSK3JniKtFQ" vertex="_sUw-MFTAEeuvSIpoIJb8KA"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_3VPEAFSqEeuvSIpoIJb8KA" base_ControlFlow="_QTh5wFRMEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ValueConstraint" xmi:id="_E15lQIt1EeuNdOBo8aJE0g" attribute="_qtstUIt0EeuNdOBo8aJE0g" value="50" comperator="LessThan"/>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ControlFlowWithConstraint xmi:id="_5Zh3AFSqEeuvSIpoIJb8KA" base_ControlFlow="_DmCTcFRMEeuvSIpoIJb8KA">
+    <constraint xmi:type="semanticSepcification:ValueConstraint" xmi:id="_8VjU0It0EeuNdOBo8aJE0g" attribute="_qtstUIt0EeuNdOBo8aJE0g" value="50" comperator="GreaterThanOrEqualTo"/>
+  </semanticSepcification:ControlFlowWithConstraint>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_SkCxQItqEeuNdOBo8aJE0g" base_Action="_SjmFUItqEeuNdOBo8aJE0g" objectlifecycleBehavior="_87LToC2sEeunIrWJiW4dhw">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_gsbqkOuZEeukSK3JniKtFQ" vertex="_-pklkC2gEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_iVGRgOuZEeukSK3JniKtFQ" vertex="_Jo4FsIttEeuNdOBo8aJE0g"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_uf1twItqEeuNdOBo8aJE0g" base_Action="_VBRfwDMlEeuRaPPmfbSV2w" objectlifecycleBehavior="_BhPSEC2oEeunIrWJiW4dhw">
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_UrirkOuZEeukSK3JniKtFQ" vertex="_qxLe0C2gEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_vrx8cItqEeuNdOBo8aJE0g" base_Action="_B6XYoFRIEeuvSIpoIJb8KA" objectlifecycleBehavior="_kvoScC2oEeunIrWJiW4dhw">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Z3GxgOuZEeukSK3JniKtFQ" vertex="_qxLe0C2gEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_cBvdEOuZEeukSK3JniKtFQ" vertex="_-pklkC2gEeunIrWJiW4dhw"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_1vnuMItqEeuNdOBo8aJE0g" base_Action="_1f9jMDMmEeuRaPPmfbSV2w" objectlifecycleBehavior="_pdvOEC2tEeunIrWJiW4dhw">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_lzRokOuZEeukSK3JniKtFQ" vertex="_Jo4FsIttEeuNdOBo8aJE0g"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_qAw8sOuZEeukSK3JniKtFQ" vertex="_DytuIItuEeuNdOBo8aJE0g"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+  <semanticSepcification:ActionWithSemanticSpecification xmi:id="_SV0jgIt0EeuNdOBo8aJE0g" base_Action="_rxErUItzEeuNdOBo8aJE0g" objectlifecycleBehavior="_CKhukC3HEeunIrWJiW4dhw">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_8aV8EOuZEeukSK3JniKtFQ" vertex="_ZtcDcC3AEeunIrWJiW4dhw"/>
+    <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_-MBVEOuZEeukSK3JniKtFQ" vertex="_dXd4QFSbEeuvSIpoIJb8KA"/>
+  </semanticSepcification:ActionWithSemanticSpecification>
+</xmi:XMI>

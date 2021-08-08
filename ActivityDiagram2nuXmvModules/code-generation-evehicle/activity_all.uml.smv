@@ -1,0 +1,350 @@
+-- Module Compilation of main
+MODULE MainActivity(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		ForkAutoGen0toCall_User_Process: ControlFlow();
+		Call_User_ProcesstoJoin: ControlFlow();
+		ForkAutoGen0toCall_Charging_Station_Process: ControlFlow();
+		Call_Charging_Station_ProcesstoJoinAutoGen0: ControlFlow();
+		ForktoCall_Car_Process: ControlFlow();
+		Call_Car_ProcesstoJoinAutoGen0: ControlFlow();
+		JointoFinalNode: ControlFlow();
+		InitialtoFork: ControlFlow();
+		ForktoForkAutoGen0: ControlFlow();
+		JoinAutoGen0toJoin: ControlFlow();
+		
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoFork, reset);
+		FinalNode: EndPoint(controlFlowOut.backwardSignal, JointoFinalNode, reset);
+		Fork: Fork(InitialtoFork, ForktoCall_Car_Process, ForktoForkAutoGen0, reset);
+		Join: Join(Call_User_ProcesstoJoin, JoinAutoGen0toJoin, JointoFinalNode, reset);
+		Call_User_Process: User_Process(ForkAutoGen0toCall_User_Process, Call_User_ProcesstoJoin, container, reset);
+		Call_Car_Process: Car_Process(ForktoCall_Car_Process, Call_Car_ProcesstoJoinAutoGen0, container, reset);
+		Call_Charging_Station_Process: Charging_Station_Process(ForkAutoGen0toCall_Charging_Station_Process, Call_Charging_Station_ProcesstoJoinAutoGen0, container, reset);
+		ForkAutoGen0: Fork(ForktoForkAutoGen0, ForkAutoGen0toCall_User_Process, ForkAutoGen0toCall_Charging_Station_Process, reset);
+		JoinAutoGen0: Join(Call_Charging_Station_ProcesstoJoinAutoGen0, Call_Car_ProcesstoJoinAutoGen0, JoinAutoGen0toJoin, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := FinalNode.FINISHED;
+
+	DEFINE
+		trig0 := Call_User_Process.trig0;
+		trig1 := Call_User_Process.trig1 | Call_Car_Process.trig1;
+		trig2 := Call_User_Process.trig2;
+		trig3 := Call_User_Process.trig3;
+		trig4 := Call_User_Process.trig4;
+		trig5 := Call_User_Process.trig5;
+		trig6 := Call_Car_Process.trig6;
+		trig7 := Call_Car_Process.trig7;
+		trig8 := Call_Charging_Station_Process.trig8;
+		trig9 := Call_Charging_Station_Process.trig9;
+		trig10 := Call_Charging_Station_Process.trig10;
+		SUB_ACTIVE := Initial.ACTIVE | FinalNode.ACTIVE | Fork.ACTIVE | Join.ACTIVE | Call_User_Process.SUB_ACTIVE | Call_Car_Process.SUB_ACTIVE | Call_Charging_Station_Process.SUB_ACTIVE | ForkAutoGen0.ACTIVE | JoinAutoGen0.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+
+
+-- STM Compilation of OLC_Car
+MODULE OLC_Car_StateMachine(container)
+	VAR
+		Cycle_error : {Initial, Set_charging_cable_connected, Set_charging_active, Set_charging_finished, Set_charging_cable_disconnected, Final, error};
+		Charging_Active : {Initial, Car_Charging_not_active, Car_Charging_active};
+		Cable : {Initial, Car_Cable_disconnected, Car_Cable_connected};
+		Battery_Level : {Initial, 20, 40, 60, 80, 100, 0};
+	
+	DEFINE
+		no_signal_Cycle_error := !(container.trig4 | container.trig2 | container.trig7 | container.trig6);
+		ERROR := (Cycle_error = error);
+	
+	ASSIGN
+		init(Cycle_error) := Initial;
+		next(Cycle_error) :=
+			case
+				(Cycle_error = Initial) & (container.trig4): Set_charging_cable_connected;
+				(Cycle_error = Set_charging_cable_disconnected) : Final;
+				(Cycle_error = Set_charging_finished) & (container.trig2): Set_charging_cable_disconnected;
+				(Cycle_error = Set_charging_active) & (container.trig7): Set_charging_finished;
+				(Cycle_error = Set_charging_cable_connected) & (container.trig2): Set_charging_cable_disconnected;
+				(Cycle_error = Set_charging_cable_connected) & (container.trig6): Set_charging_active;
+				no_signal_Cycle_error : Cycle_error;
+				TRUE : error;
+			esac;
+		
+		init(Charging_Active) := Initial;
+		next(Charging_Active) :=
+			case
+				(Charging_Active = Initial) : Car_Charging_not_active;
+				(Charging_Active = Car_Charging_not_active) & ((container.olc.OLC_Car_StateMachineobj.Cycle_error = Set_charging_active) = TRUE): Car_Charging_active;
+				(Charging_Active = Car_Charging_active) & ((container.olc.OLC_Car_StateMachineobj.Cycle_error = Set_charging_finished) = TRUE): Car_Charging_not_active;
+				TRUE : Charging_Active;
+			esac;
+		
+		init(Cable) := Initial;
+		next(Cable) :=
+			case
+				(Cable = Initial) : Car_Cable_disconnected;
+				(Cable = Car_Cable_connected) & ((container.olc.OLC_Car_StateMachineobj.Cycle_error = Set_charging_cable_disconnected) = TRUE): Car_Cable_disconnected;
+				(Cable = Car_Cable_disconnected) & ((container.olc.OLC_Car_StateMachineobj.Cycle_error = Set_charging_cable_connected) = TRUE): Car_Cable_connected;
+				TRUE : Cable;
+			esac;
+		
+		init(Battery_Level) := Initial;
+		next(Battery_Level) :=
+			case
+				(Battery_Level = 0) & ((container.olc.OLC_Car_StateMachineobj.Charging_Active = Car_Charging_active) = TRUE): 20;
+				(Battery_Level = 20) & ((container.olc.OLC_Car_StateMachineobj.Charging_Active = Car_Charging_active) = TRUE): 40;
+				(Battery_Level = 40) & ((container.olc.OLC_Car_StateMachineobj.Charging_Active = Car_Charging_active) = TRUE): 60;
+				(Battery_Level = 60) & ((container.olc.OLC_Car_StateMachineobj.Charging_Active = Car_Charging_active) = TRUE): 80;
+				(Battery_Level = 80) & ((container.olc.OLC_Car_StateMachineobj.Charging_Active = Car_Charging_active) = TRUE): 100;
+				(Battery_Level = Initial) : 0;
+				TRUE : Battery_Level;
+			esac;
+		
+
+
+-- STM Compilation of OLC_charging_station
+MODULE OCL_charging_station_StateMachine(container)
+	VAR
+		Cycle_error : {Initial, Set_charging_cable_connected, Set_voltage_applied, Set_charging_finished, Set_charging_cable_disconnected, FinalState, Set_auth_checked, error};
+		Cable : {Initial, Charging_Station_Cabel_disconnected, Charging_Station_Cabel_connected};
+		Voltage : {Initial, Charging_Station_Voltage_unapplied, Charging_Station_Voltage_applied};
+		Authorization : {Initial, Charging_Station_Charging_granted, Charging_Station_Charging_not_granted, Waiting};
+	
+	DEFINE
+		no_signal_Cycle_error := !(container.trig5 | container.trig10 | container.trig9 | container.trig3 | container.trig8);
+		ERROR := (Cycle_error = error);
+	
+	ASSIGN
+		init(Cycle_error) := Initial;
+		next(Cycle_error) :=
+			case
+				(Cycle_error = Initial) & (container.trig5): Set_charging_cable_connected;
+				(Cycle_error = Set_auth_checked) & (container.trig10): Set_voltage_applied;
+				(Cycle_error = Set_voltage_applied) & (container.trig9): Set_charging_finished;
+				(Cycle_error = Set_charging_finished) & (container.trig3): Set_charging_cable_disconnected;
+				(Cycle_error = Set_charging_cable_disconnected) : FinalState;
+				(Cycle_error = Set_charging_cable_connected) & (container.trig3): Set_charging_cable_disconnected;
+				(Cycle_error = Set_charging_cable_connected) & (container.trig8): Set_auth_checked;
+				(Cycle_error = Set_auth_checked) & (container.trig3): Set_charging_cable_disconnected;
+				no_signal_Cycle_error : Cycle_error;
+				TRUE : error;
+			esac;
+		
+		init(Cable) := Initial;
+		next(Cable) :=
+			case
+				(Cable = Initial) : Charging_Station_Cabel_disconnected;
+				(Cable = Charging_Station_Cabel_disconnected) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_charging_cable_connected) = TRUE): Charging_Station_Cabel_connected;
+				(Cable = Charging_Station_Cabel_connected) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_charging_cable_disconnected) = TRUE): Charging_Station_Cabel_disconnected;
+				TRUE : Cable;
+			esac;
+		
+		init(Voltage) := Initial;
+		next(Voltage) :=
+			case
+				(Voltage = Charging_Station_Voltage_unapplied) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_voltage_applied) = TRUE): Charging_Station_Voltage_applied;
+				(Voltage = Initial) : Charging_Station_Voltage_unapplied;
+				(Voltage = Charging_Station_Voltage_applied) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_charging_finished) = TRUE): Charging_Station_Voltage_unapplied;
+				TRUE : Voltage;
+			esac;
+		
+		init(Authorization) := Initial;
+		next(Authorization) :=
+			case
+				(Authorization = Waiting) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_auth_checked) = TRUE): Charging_Station_Charging_not_granted;
+				(Authorization = Waiting) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_auth_checked) = TRUE): Charging_Station_Charging_granted;
+				(Authorization = Charging_Station_Charging_granted) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_charging_cable_disconnected) = TRUE): Waiting;
+				(Authorization = Charging_Station_Charging_not_granted) & ((container.olc.OCL_charging_station_StateMachineobj.Cycle_error = Set_charging_cable_disconnected) = TRUE): Waiting;
+				(Authorization = Initial) : Waiting;
+				TRUE : Authorization;
+			esac;
+		
+
+
+-- Module Compilation of Process_charging_station
+MODULE Charging_Station_Process(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		InitialtoReceive_Check_Authentication_Data: ControlFlow();
+		MergetoFinalNode: ControlFlow();
+		DecAuthorizationGrantsChargingtoApply_Voltage: ControlFlow();
+		Receive_Check_Authentication_DatatoDecAuthorizationGrantsCharging: ControlFlow();
+		DecAuthorizationGrantsChargingtoMerge: ControlFlow();
+		Receive_Stop_ChargingtoMerge: ControlFlow();
+		Apply_VoltagetoReceive_Stop_Charging: ControlFlow();
+		
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoReceive_Check_Authentication_Data, reset);
+		Receive_Check_Authentication_Data: ReceiveAction(TRUE, TRUE, container.trig0, InitialtoReceive_Check_Authentication_Data, Receive_Check_Authentication_DatatoDecAuthorizationGrantsCharging, reset);
+		Receive_Stop_Charging: ReceiveAction(TRUE, TRUE, container.trig1, Apply_VoltagetoReceive_Stop_Charging, Receive_Stop_ChargingtoMerge, reset);
+		Merge: Merge(Receive_Stop_ChargingtoMerge, DecAuthorizationGrantsChargingtoMerge, MergetoFinalNode, reset);
+		FinalNode: EndPoint(controlFlowOut.backwardSignal, MergetoFinalNode, reset);
+		DecAuthorizationGrantsCharging: Decision((container.olc.OCL_charging_station_StateMachineobj.Authorization = Charging_Station_Charging_granted), (container.olc.OCL_charging_station_StateMachineobj.Authorization = Charging_Station_Charging_not_granted), Receive_Check_Authentication_DatatoDecAuthorizationGrantsCharging, DecAuthorizationGrantsChargingtoApply_Voltage, DecAuthorizationGrantsChargingtoMerge, reset);
+		Apply_Voltage: Action(TRUE, TRUE, DecAuthorizationGrantsChargingtoApply_Voltage, Apply_VoltagetoReceive_Stop_Charging, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := FinalNode.FINISHED;
+
+	DEFINE
+		trig8 := Receive_Check_Authentication_Data.BEH;
+		trig9 := Receive_Stop_Charging.BEH;
+		trig10 := Apply_Voltage.BEH;
+		SUB_ACTIVE := Initial.ACTIVE | Receive_Check_Authentication_Data.ACTIVE | Receive_Stop_Charging.ACTIVE | Merge.ACTIVE | FinalNode.ACTIVE | DecAuthorizationGrantsCharging.ACTIVE | Apply_Voltage.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+MODULE Car_Process(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		MergetoActivityFinal: ControlFlow();
+		Merge1toDecBatteryFull: ControlFlow();
+		InitialNodetoInitiate_Process: ControlFlow();
+		Start_Charging_BatterytoMerge1: ControlFlow();
+		DecVoltageSuppliedtoMerge1: ControlFlow();
+		DecBatteryFulltoDecVoltageSupplied: ControlFlow();
+		DecVoltageSuppliedtoStop_Charging_Battery: ControlFlow();
+		DecBatteryFulltoStop_Charging_Battery_2: ControlFlow();
+		Stop_Charging_BatterytoMerge: ControlFlow();
+		Send_Charging_FinishedtoMerge2: ControlFlow();
+		Stop_Charging_Battery_2toSend_Charging_Finished: ControlFlow();
+		Initiate_ProcesstoMerge3: ControlFlow();
+		Merge3toDecVoltageSupplied1: ControlFlow();
+		DecVoltageSupplied1toStart_Charging_Battery: ControlFlow();
+		DecVoltageSupplied1toDecCableDisconnected: ControlFlow();
+		DecCableDisconnectedtoMerge3: ControlFlow();
+		DecCableDisconnectedtoMerge2: ControlFlow();
+		Merge2toMerge: ControlFlow();
+		
+		InitialNode: InitialPoint(controlFlowIn.forwardSignal, InitialNodetoInitiate_Process, reset);
+		Send_Charging_Finished: SendAction(TRUE, TRUE, Stop_Charging_Battery_2toSend_Charging_Finished, Send_Charging_FinishedtoMerge2, reset);
+		Merge: Merge(Stop_Charging_BatterytoMerge, Merge2toMerge, MergetoActivityFinal, reset);
+		ActivityFinal: EndPoint(controlFlowOut.backwardSignal, MergetoActivityFinal, reset);
+		Start_Charging_Battery: Action((container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_applied), TRUE, DecVoltageSupplied1toStart_Charging_Battery, Start_Charging_BatterytoMerge1, reset);
+		Merge1: Merge(Start_Charging_BatterytoMerge1, DecVoltageSuppliedtoMerge1, Merge1toDecBatteryFull, reset);
+		DecBatteryFull: Decision(((container.olc.OLC_Car_StateMachineobj.Battery_Level = 20) | (container.olc.OLC_Car_StateMachineobj.Battery_Level = 40) | (container.olc.OLC_Car_StateMachineobj.Battery_Level = 60) | (container.olc.OLC_Car_StateMachineobj.Battery_Level = 80) | (container.olc.OLC_Car_StateMachineobj.Battery_Level = Initial)), (container.olc.OLC_Car_StateMachineobj.Battery_Level = 100), Merge1toDecBatteryFull, DecBatteryFulltoDecVoltageSupplied, DecBatteryFulltoStop_Charging_Battery_2, reset);
+		DecVoltageSupplied: Decision((container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_applied), (container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_unapplied), DecBatteryFulltoDecVoltageSupplied, DecVoltageSuppliedtoMerge1, DecVoltageSuppliedtoStop_Charging_Battery, reset);
+		Stop_Charging_Battery_2: Action(TRUE, TRUE, DecBatteryFulltoStop_Charging_Battery_2, Stop_Charging_Battery_2toSend_Charging_Finished, reset);
+		Stop_Charging_Battery: Action(TRUE, TRUE, DecVoltageSuppliedtoStop_Charging_Battery, Stop_Charging_BatterytoMerge, reset);
+		Merge2: Merge(Send_Charging_FinishedtoMerge2, DecCableDisconnectedtoMerge2, Merge2toMerge, reset);
+		Initiate_Process: Action((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), TRUE, InitialNodetoInitiate_Process, Initiate_ProcesstoMerge3, reset);
+		Merge3: Merge(Initiate_ProcesstoMerge3, DecCableDisconnectedtoMerge3, Merge3toDecVoltageSupplied1, reset);
+		DecVoltageSupplied1: Decision((container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_applied), (container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_unapplied), Merge3toDecVoltageSupplied1, DecVoltageSupplied1toStart_Charging_Battery, DecVoltageSupplied1toDecCableDisconnected, reset);
+		DecCableDisconnected: Decision((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), DecVoltageSupplied1toDecCableDisconnected, DecCableDisconnectedtoMerge3, DecCableDisconnectedtoMerge2, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & InitialNode.ACTIVE;
+		controlFlowOut.forwardSignal := ActivityFinal.FINISHED;
+
+	DEFINE
+		trig6 := Start_Charging_Battery.BEH;
+		trig7 := Stop_Charging_Battery_2.BEH | Stop_Charging_Battery.BEH;
+		trig1 := Send_Charging_Finished.TRIGGEROUT;
+		SUB_ACTIVE := InitialNode.ACTIVE | Send_Charging_Finished.ACTIVE | Merge.ACTIVE | ActivityFinal.ACTIVE | Start_Charging_Battery.ACTIVE | Merge1.ACTIVE | DecBatteryFull.ACTIVE | DecVoltageSupplied.ACTIVE | Stop_Charging_Battery_2.ACTIVE | Stop_Charging_Battery.ACTIVE | Merge2.ACTIVE | Initiate_Process.ACTIVE | Merge3.ACTIVE | DecVoltageSupplied1.ACTIVE | DecCableDisconnected.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+MODULE User_Process(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		Send_Provide_AuthenticationtoDecAuthorizationGrantsCharging: ControlFlow();
+		Call_Connect_Cable_ActivitytoSend_Provide_Authentication: ControlFlow();
+		InitialtoCall_Connect_Cable_Activity: ControlFlow();
+		DecAuthorizationGrantsChargingtoMerge4: ControlFlow();
+		DecAuthorizationGrantsChargingtoMerge2: ControlFlow();
+		DecAbortChargingtoSend_Stop_Charging: ControlFlow();
+		Send_Stop_ChargingtoMerge2: ControlFlow();
+		DecBatteryFulltoMerge3: ControlFlow();
+		DecBatteryFulltoMerge4: ControlFlow();
+		DecAbortChargingtoDecBatteryFull: ControlFlow();
+		Merge2toMerge3: ControlFlow();
+		Merge3toCall_Disconnect_Cable_Activity: ControlFlow();
+		Call_Disconnect_Cable_ActivitytoActivityFinal: ControlFlow();
+		Merge4toDecAbortCharging: ControlFlow();
+		
+		Call_Disconnect_Cable_Activity: Disconnect_Cable_Activity(Merge3toCall_Disconnect_Cable_Activity, Call_Disconnect_Cable_ActivitytoActivityFinal, container, reset);
+		Call_Connect_Cable_Activity: Connect_Cable_Activity(InitialtoCall_Connect_Cable_Activity, Call_Connect_Cable_ActivitytoSend_Provide_Authentication, container, reset);
+		ActivityFinal: EndPoint(controlFlowOut.backwardSignal, Call_Disconnect_Cable_ActivitytoActivityFinal, reset);
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoCall_Connect_Cable_Activity, reset);
+		Send_Provide_Authentication: SendAction(TRUE, TRUE, Call_Connect_Cable_ActivitytoSend_Provide_Authentication, Send_Provide_AuthenticationtoDecAuthorizationGrantsCharging, reset);
+		DecAuthorizationGrantsCharging: Decision((container.olc.OCL_charging_station_StateMachineobj.Authorization = Charging_Station_Charging_granted), (container.olc.OCL_charging_station_StateMachineobj.Authorization = Charging_Station_Charging_not_granted), Send_Provide_AuthenticationtoDecAuthorizationGrantsCharging, DecAuthorizationGrantsChargingtoMerge4, DecAuthorizationGrantsChargingtoMerge2, reset);
+		Merge2: Merge(Send_Stop_ChargingtoMerge2, DecAuthorizationGrantsChargingtoMerge2, Merge2toMerge3, reset);
+		DecAbortCharging: Decision(TRUE, TRUE, Merge4toDecAbortCharging, DecAbortChargingtoSend_Stop_Charging, DecAbortChargingtoDecBatteryFull, reset);
+		Send_Stop_Charging: SendAction(TRUE, TRUE, DecAbortChargingtoSend_Stop_Charging, Send_Stop_ChargingtoMerge2, reset);
+		DecBatteryFull: Decision((container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_unapplied), (container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_applied), DecAbortChargingtoDecBatteryFull, DecBatteryFulltoMerge3, DecBatteryFulltoMerge4, reset);
+		Merge3: Merge(DecBatteryFulltoMerge3, Merge2toMerge3, Merge3toCall_Disconnect_Cable_Activity, reset);
+		Merge4: Merge(DecBatteryFulltoMerge4, DecAuthorizationGrantsChargingtoMerge4, Merge4toDecAbortCharging, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := ActivityFinal.FINISHED;
+
+	DEFINE
+		trig0 := Send_Provide_Authentication.TRIGGEROUT;
+		trig1 := Send_Stop_Charging.TRIGGEROUT;
+		trig2 := Call_Disconnect_Cable_Activity.trig2;
+		trig3 := Call_Disconnect_Cable_Activity.trig3;
+		trig4 := Call_Connect_Cable_Activity.trig4;
+		trig5 := Call_Connect_Cable_Activity.trig5;
+		SUB_ACTIVE := Call_Disconnect_Cable_Activity.SUB_ACTIVE | Call_Connect_Cable_Activity.SUB_ACTIVE | ActivityFinal.ACTIVE | Initial.ACTIVE | Send_Provide_Authentication.ACTIVE | DecAuthorizationGrantsCharging.ACTIVE | Merge2.ACTIVE | DecAbortCharging.ACTIVE | Send_Stop_Charging.ACTIVE | DecBatteryFull.ACTIVE | Merge3.ACTIVE | Merge4.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+MODULE Connect_Cable_Activity(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		InitialtoDecision: ControlFlow();
+		DecisiontoConnect_Charging_Cable_Car_1: ControlFlow();
+		DecisiontoConnect_Charging_Cable_Station_2: ControlFlow();
+		Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1: ControlFlow();
+		Connect_Charging_Cable_Car_2toMerge: ControlFlow();
+		Connect_Charging_Cable_Station_1toMerge: ControlFlow();
+		MergetoFinalNode: ControlFlow();
+		Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2: ControlFlow();
+		
+		FinalNode: EndPoint(controlFlowOut.backwardSignal, MergetoFinalNode, reset);
+		Merge: Merge(Connect_Charging_Cable_Car_2toMerge, Connect_Charging_Cable_Station_1toMerge, MergetoFinalNode, reset);
+		Decision: Decision(TRUE, TRUE, InitialtoDecision, DecisiontoConnect_Charging_Cable_Car_1, DecisiontoConnect_Charging_Cable_Station_2, reset);
+		Connect_Charging_Cable_Car_1: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), DecisiontoConnect_Charging_Cable_Car_1, Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, reset);
+		Connect_Charging_Cable_Car_2: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, Connect_Charging_Cable_Car_2toMerge, reset);
+		Connect_Charging_Cable_Station_1: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, Connect_Charging_Cable_Station_1toMerge, reset);
+		Connect_Charging_Cable_Station_2: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), DecisiontoConnect_Charging_Cable_Station_2, Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, reset);
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoDecision, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := FinalNode.FINISHED;
+
+	DEFINE
+		trig4 := Connect_Charging_Cable_Car_1.BEH | Connect_Charging_Cable_Car_2.BEH;
+		trig5 := Connect_Charging_Cable_Station_1.BEH | Connect_Charging_Cable_Station_2.BEH;
+		SUB_ACTIVE := FinalNode.ACTIVE | Merge.ACTIVE | Decision.ACTIVE | Connect_Charging_Cable_Car_1.ACTIVE | Connect_Charging_Cable_Car_2.ACTIVE | Connect_Charging_Cable_Station_1.ACTIVE | Connect_Charging_Cable_Station_2.ACTIVE | Initial.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
+MODULE Disconnect_Cable_Activity(controlFlowIn, controlFlowOut, container, resetExt)
+	VAR
+		InitialtoDecision: ControlFlow();
+		DecisiontoDisconnect_Charging_Cable_Car_1: ControlFlow();
+		Disconnect_Charging_Cable_Car_1toDisconnect_Charging_Cable_Station_1: ControlFlow();
+		Disconnect_Charging_Cable_Station_1toMerge: ControlFlow();
+		MergetoFinal: ControlFlow();
+		Disconnect_Charging_Cable_Car_2toMerge: ControlFlow();
+		Disconnect_Charging_Cable_Station_2toDisconnect_Charging_Cable_Car_2: ControlFlow();
+		DecisiontoDisconnect_Charging_Cable_Station_2: ControlFlow();
+		
+		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoDecision, reset);
+		Decision: Decision(TRUE, TRUE, InitialtoDecision, DecisiontoDisconnect_Charging_Cable_Car_1, DecisiontoDisconnect_Charging_Cable_Station_2, reset);
+		Disconnect_Charging_Cable_Car_1: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), DecisiontoDisconnect_Charging_Cable_Car_1, Disconnect_Charging_Cable_Car_1toDisconnect_Charging_Cable_Station_1, reset);
+		Disconnect_Charging_Cable_Station_2: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_disconnected), DecisiontoDisconnect_Charging_Cable_Station_2, Disconnect_Charging_Cable_Station_2toDisconnect_Charging_Cable_Car_2, reset);
+		Disconnect_Charging_Cable_Station_1: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_disconnected), Disconnect_Charging_Cable_Car_1toDisconnect_Charging_Cable_Station_1, Disconnect_Charging_Cable_Station_1toMerge, reset);
+		Disconnect_Charging_Cable_Car_2: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), Disconnect_Charging_Cable_Station_2toDisconnect_Charging_Cable_Car_2, Disconnect_Charging_Cable_Car_2toMerge, reset);
+		Merge: Merge(Disconnect_Charging_Cable_Station_1toMerge, Disconnect_Charging_Cable_Car_2toMerge, MergetoFinal, reset);
+		Final: EndPoint(controlFlowOut.backwardSignal, MergetoFinal, reset);
+	
+	
+	ASSIGN
+		controlFlowIn.backwardSignal := controlFlowIn.forwardSignal & Initial.ACTIVE;
+		controlFlowOut.forwardSignal := Final.FINISHED;
+
+	DEFINE
+		trig2 := Disconnect_Charging_Cable_Car_1.BEH | Disconnect_Charging_Cable_Car_2.BEH;
+		trig3 := Disconnect_Charging_Cable_Station_2.BEH | Disconnect_Charging_Cable_Station_1.BEH;
+		SUB_ACTIVE := Initial.ACTIVE | Decision.ACTIVE | Disconnect_Charging_Cable_Car_1.ACTIVE | Disconnect_Charging_Cable_Station_2.ACTIVE | Disconnect_Charging_Cable_Station_1.ACTIVE | Disconnect_Charging_Cable_Car_2.ACTIVE | Merge.ACTIVE | Final.ACTIVE;
+		reset := resetExt | controlFlowOut.backwardSignal;
+
