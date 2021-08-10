@@ -1,0 +1,23 @@
+# this sets the cpp precompiler (necessary to include module.h into the main.smv-File)
+set on_failure_script_quits
+
+set pp_list cpp
+
+# Reads the model from file (simple syntax check included)
+read_model
+
+time
+
+go_msat
+
+# checks both if an error state is reached and if the defined states are reached
+#msat_check_ltlspec_sbmc_inc -k 200 -p "G(!olc.ERROR) & F( terminator.state = terminated )" -c
+# checks completeness as well
+msat_check_ltlspec_sbmc_inc -k 200 -p "G(!olc.ERROR) & F( G(terminator.state = terminated ))" -c
+
+
+time
+
+# exits nuXmv
+quit
+

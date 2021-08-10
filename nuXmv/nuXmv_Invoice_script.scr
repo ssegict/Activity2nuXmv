@@ -1,0 +1,23 @@
+# this sets the cpp precompiler (necessary to include module.h into the main.smv-File)
+set on_failure_script_quits
+
+set pp_list cpp
+
+# Reads the model from file (simple syntax check included)
+read_model
+
+time
+
+go_msat
+
+# checks business rule (1) of Section 8.1
+#msat_check_ltlspec_sbmc_inc -k 200 -p "G(olc.OLC_Customer_StateMachineobj.Paid = CP_Paid_True -> (((olc.OLC_Customer_StateMachineobj.Received = CP_Received_True) & (olc.amount9 >=50) & (olc.OLC_Customer_StateMachineobj.Authorized = CP_Authorized_True)) | (!(olc.amount9 >=50) & !(olc.OLC_Customer_StateMachineobj.Authorized = CP_Authorized_True))))" -c
+# checks business rule (2) of Section 8.1
+msat_check_ltlspec_sbmc_inc -k 200 -p "G(olc.OLC_Customer_StateMachineobj.Paid = CP_Paid_True -> (((olc.OLC_Customer_StateMachineobj.Received = CP_Received_True) & (olc.OLC_Customer_StateMachineobj.Authorized = CP_Authorized_True)) | !(olc.amount9 >=50)))" -c
+
+
+time
+
+# exits nuXmv
+quit
+
