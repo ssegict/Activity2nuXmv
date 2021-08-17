@@ -224,7 +224,7 @@ MODULE Car_Process(controlFlowIn, controlFlowOut, container, resetExt)
 		Stop_Charging_Battery_2: Action(TRUE, TRUE, DecBatteryFulltoStop_Charging_Battery_2, Stop_Charging_Battery_2toSend_Charging_Finished, reset);
 		Stop_Charging_Battery: Action(TRUE, TRUE, DecVoltageSuppliedtoStop_Charging_Battery, Stop_Charging_BatterytoMerge, reset);
 		Merge2: Merge(Send_Charging_FinishedtoMerge2, DecCableDisconnectedtoMerge2, Merge2toMerge, reset);
-		Initiate_Process: Action((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), TRUE, InitialNodetoInitiate_Process, Initiate_ProcesstoMerge3, reset);
+		Initiate_Process: Action((container.olc.OLC_Car_StateMachineobj.Battery_Level = 100), TRUE, InitialNodetoInitiate_Process, Initiate_ProcesstoMerge3, reset);
 		Merge3: Merge(Initiate_ProcesstoMerge3, DecCableDisconnectedtoMerge3, Merge3toDecVoltageSupplied1, reset);
 		DecVoltageSupplied1: Decision((container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_applied), (container.olc.OCL_charging_station_StateMachineobj.Voltage = Charging_Station_Voltage_unapplied), Merge3toDecVoltageSupplied1, DecVoltageSupplied1toStart_Charging_Battery, DecVoltageSupplied1toDecCableDisconnected, reset);
 		DecCableDisconnected: Decision((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), DecVoltageSupplied1toDecCableDisconnected, DecCableDisconnectedtoMerge3, DecCableDisconnectedtoMerge2, reset);
@@ -300,10 +300,10 @@ MODULE Connect_Cable_Activity(controlFlowIn, controlFlowOut, container, resetExt
 		FinalNode: EndPoint(controlFlowOut.backwardSignal, MergetoFinalNode, reset);
 		Merge: Merge(Connect_Charging_Cable_Car_2toMerge, Connect_Charging_Cable_Station_1toMerge, MergetoFinalNode, reset);
 		Decision: Decision(TRUE, TRUE, InitialtoDecision, DecisiontoConnect_Charging_Cable_Car_1, DecisiontoConnect_Charging_Cable_Station_2, reset);
-		Connect_Charging_Cable_Car_1: Action((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), DecisiontoConnect_Charging_Cable_Car_1, Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, reset);
-		Connect_Charging_Cable_Car_2: Action((container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_disconnected), (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, Connect_Charging_Cable_Car_2toMerge, reset);
-		Connect_Charging_Cable_Station_1: Action((container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_disconnected), (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, Connect_Charging_Cable_Station_1toMerge, reset);
-		Connect_Charging_Cable_Station_2: Action((container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_disconnected), (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), DecisiontoConnect_Charging_Cable_Station_2, Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, reset);
+		Connect_Charging_Cable_Car_1: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), DecisiontoConnect_Charging_Cable_Car_1, Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, reset);
+		Connect_Charging_Cable_Car_2: Action(TRUE, (container.olc.OLC_Car_StateMachineobj.Cable = Car_Cable_connected), Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, Connect_Charging_Cable_Car_2toMerge, reset);
+		Connect_Charging_Cable_Station_1: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), Connect_Charging_Cable_Car_1toConnect_Charging_Cable_Station_1, Connect_Charging_Cable_Station_1toMerge, reset);
+		Connect_Charging_Cable_Station_2: Action(TRUE, (container.olc.OCL_charging_station_StateMachineobj.Cable = Charging_Station_Cabel_connected), DecisiontoConnect_Charging_Cable_Station_2, Connect_Charging_Cable_Station_2toConnect_Charging_Cable_Car_2, reset);
 		Initial: InitialPoint(controlFlowIn.forwardSignal, InitialtoDecision, reset);
 	
 	

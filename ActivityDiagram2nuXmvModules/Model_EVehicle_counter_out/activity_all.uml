@@ -4,26 +4,26 @@
     <packageImport xmi:id="_cHaJUC2xEeunIrWJiW4dhw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Activity" xmi:id="_d45VEC2xEeunIrWJiW4dhw" name="MainActivity" node="_jzJF8C2xEeunIrWJiW4dhw _lYkLoC2xEeunIrWJiW4dhw _AnOwsC9EEeuga4oeM-Ka6w _FtgG8C9EEeuga4oeM-Ka6w _LF69IC9EEeuga4oeM-Ka6w _f9H1gC9EEeuga4oeM-Ka6w _WjArgC9EEeuga4oeM-Ka6w _9lJU8P9mEeuhW5mhPr4xuA _9lJU8v9mEeuhW5mhPr4xuA">
+    <packagedElement xmi:type="uml:Activity" xmi:id="_d45VEC2xEeunIrWJiW4dhw" name="MainActivity" node="_jzJF8C2xEeunIrWJiW4dhw _lYkLoC2xEeunIrWJiW4dhw _AnOwsC9EEeuga4oeM-Ka6w _FtgG8C9EEeuga4oeM-Ka6w _LF69IC9EEeuga4oeM-Ka6w _f9H1gC9EEeuga4oeM-Ka6w _WjArgC9EEeuga4oeM-Ka6w _ufYQgOuuEeuTvPYwkTZ6HQ _ufYQguuuEeuTvPYwkTZ6HQ">
       <edge xmi:type="uml:ControlFlow" xmi:id="_lNHIcC9EEeuga4oeM-Ka6w" target="_LF69IC9EEeuga4oeM-Ka6w" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_lxyi0C9EEeuga4oeM-Ka6w" target="_9lJU8v9mEeuhW5mhPr4xuA" source="_LF69IC9EEeuga4oeM-Ka6w"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_mVE2EC9EEeuga4oeM-Ka6w" target="_WjArgC9EEeuga4oeM-Ka6w" source="_9lJU8P9mEeuhW5mhPr4xuA"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_m5w3gC9EEeuga4oeM-Ka6w" target="_9lJU8v9mEeuhW5mhPr4xuA" source="_WjArgC9EEeuga4oeM-Ka6w"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_nmcXUC9EEeuga4oeM-Ka6w" target="_f9H1gC9EEeuga4oeM-Ka6w" source="_9lJU8P9mEeuhW5mhPr4xuA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_lxyi0C9EEeuga4oeM-Ka6w" target="_ufYQguuuEeuTvPYwkTZ6HQ" source="_LF69IC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mVE2EC9EEeuga4oeM-Ka6w" target="_WjArgC9EEeuga4oeM-Ka6w" source="_ufYQgOuuEeuTvPYwkTZ6HQ"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_m5w3gC9EEeuga4oeM-Ka6w" target="_ufYQguuuEeuTvPYwkTZ6HQ" source="_WjArgC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_nmcXUC9EEeuga4oeM-Ka6w" target="_f9H1gC9EEeuga4oeM-Ka6w" source="_ufYQgOuuEeuTvPYwkTZ6HQ"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_pHaa0C9EEeuga4oeM-Ka6w" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_f9H1gC9EEeuga4oeM-Ka6w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_qVA2YC9EEeuga4oeM-Ka6w" target="_lYkLoC2xEeunIrWJiW4dhw" source="_FtgG8C9EEeuga4oeM-Ka6w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_rKH5cC9EEeuga4oeM-Ka6w" target="_AnOwsC9EEeuga4oeM-Ka6w" source="_jzJF8C2xEeunIrWJiW4dhw"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_9lJU8f9mEeuhW5mhPr4xuA" name="ForkFlow0" target="_9lJU8P9mEeuhW5mhPr4xuA" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
-      <edge xmi:type="uml:ControlFlow" xmi:id="_9lJU8_9mEeuhW5mhPr4xuA" name="JoinFlow0" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_9lJU8v9mEeuhW5mhPr4xuA"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ufYQgeuuEeuTvPYwkTZ6HQ" name="ForkFlow0" target="_ufYQgOuuEeuTvPYwkTZ6HQ" source="_AnOwsC9EEeuga4oeM-Ka6w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ufYQg-uuEeuTvPYwkTZ6HQ" name="JoinFlow0" target="_FtgG8C9EEeuga4oeM-Ka6w" source="_ufYQguuuEeuTvPYwkTZ6HQ"/>
       <node xmi:type="uml:InitialNode" xmi:id="_jzJF8C2xEeunIrWJiW4dhw" name="Initial" outgoing="_rKH5cC9EEeuga4oeM-Ka6w"/>
       <node xmi:type="uml:ActivityFinalNode" xmi:id="_lYkLoC2xEeunIrWJiW4dhw" name="FinalNode" incoming="_qVA2YC9EEeuga4oeM-Ka6w"/>
-      <node xmi:type="uml:ForkNode" xmi:id="_AnOwsC9EEeuga4oeM-Ka6w" name="Fork" incoming="_rKH5cC9EEeuga4oeM-Ka6w" outgoing="_lNHIcC9EEeuga4oeM-Ka6w _9lJU8f9mEeuhW5mhPr4xuA"/>
-      <node xmi:type="uml:JoinNode" xmi:id="_FtgG8C9EEeuga4oeM-Ka6w" name="Join" incoming="_pHaa0C9EEeuga4oeM-Ka6w _9lJU8_9mEeuhW5mhPr4xuA" outgoing="_qVA2YC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_AnOwsC9EEeuga4oeM-Ka6w" name="Fork" incoming="_rKH5cC9EEeuga4oeM-Ka6w" outgoing="_lNHIcC9EEeuga4oeM-Ka6w _ufYQgeuuEeuTvPYwkTZ6HQ"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_FtgG8C9EEeuga4oeM-Ka6w" name="Join" incoming="_pHaa0C9EEeuga4oeM-Ka6w _ufYQg-uuEeuTvPYwkTZ6HQ" outgoing="_qVA2YC9EEeuga4oeM-Ka6w"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_LF69IC9EEeuga4oeM-Ka6w" name="Call_User_Process" incoming="_lNHIcC9EEeuga4oeM-Ka6w" outgoing="_lxyi0C9EEeuga4oeM-Ka6w" behavior="_8xKNIC86EeuZGJ2ngK3buQ"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_WjArgC9EEeuga4oeM-Ka6w" name="Call_Charging_Station_Process" incoming="_mVE2EC9EEeuga4oeM-Ka6w" outgoing="_m5w3gC9EEeuga4oeM-Ka6w" behavior="_8BTpYC3NEeunIrWJiW4dhw"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_f9H1gC9EEeuga4oeM-Ka6w" name="Call_Car_Process" incoming="_nmcXUC9EEeuga4oeM-Ka6w" outgoing="_pHaa0C9EEeuga4oeM-Ka6w" behavior="_DE4AAC8REeu38d3zxHUFKw"/>
-      <node xmi:type="uml:ForkNode" xmi:id="_9lJU8P9mEeuhW5mhPr4xuA" name="ForkAutoGen0" incoming="_9lJU8f9mEeuhW5mhPr4xuA" outgoing="_mVE2EC9EEeuga4oeM-Ka6w _nmcXUC9EEeuga4oeM-Ka6w"/>
-      <node xmi:type="uml:JoinNode" xmi:id="_9lJU8v9mEeuhW5mhPr4xuA" name="JoinAutoGen0" incoming="_lxyi0C9EEeuga4oeM-Ka6w _m5w3gC9EEeuga4oeM-Ka6w" outgoing="_9lJU8_9mEeuhW5mhPr4xuA"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_ufYQgOuuEeuTvPYwkTZ6HQ" name="ForkAutoGen0" incoming="_ufYQgeuuEeuTvPYwkTZ6HQ" outgoing="_mVE2EC9EEeuga4oeM-Ka6w _nmcXUC9EEeuga4oeM-Ka6w"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_ufYQguuuEeuTvPYwkTZ6HQ" name="JoinAutoGen0" incoming="_lxyi0C9EEeuga4oeM-Ka6w _m5w3gC9EEeuga4oeM-Ka6w" outgoing="_ufYQg-uuEeuTvPYwkTZ6HQ"/>
     </packagedElement>
     <profileApplication xmi:id="_tBF_0FyvEeuGANEPbvMd3Q">
       <eAnnotations xmi:id="_tBF_0VyvEeuGANEPbvMd3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -561,19 +561,15 @@
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2h1yvEeuGANEPbvMd3Q" vertex="_-RcZcC2gEeunIrWJiW4dhw"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_u2aHMDMkEeuRaPPmfbSV2w" base_Action="_FOX5oDMjEeuRaPPmfbSV2w" objectlifecycleBehavior="_BhPSEC2oEeunIrWJiW4dhw">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_K7s70P9mEeu6qp1kpy2XgA" vertex="_-RcZcC2gEeunIrWJiW4dhw"/>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2iVyvEeuGANEPbvMd3Q" vertex="_-pklkC2gEeunIrWJiW4dhw"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_vtoqIDMkEeuRaPPmfbSV2w" base_Action="_XeYGQDMjEeuRaPPmfbSV2w" objectlifecycleBehavior="_9cU6EC3GEeunIrWJiW4dhw">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Q31jEP9mEeu6qp1kpy2XgA" vertex="_R19w4C3AEeunIrWJiW4dhw"/>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2i1yvEeuGANEPbvMd3Q" vertex="_ZtcDcC3AEeunIrWJiW4dhw"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_wabesDMkEeuRaPPmfbSV2w" base_Action="_QPrD4DMjEeuRaPPmfbSV2w" objectlifecycleBehavior="_9cU6EC3GEeunIrWJiW4dhw">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_OpfcMP9mEeu6qp1kpy2XgA" vertex="_R19w4C3AEeunIrWJiW4dhw"/>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2jVyvEeuGANEPbvMd3Q" vertex="_ZtcDcC3AEeunIrWJiW4dhw"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_xRqBoDMkEeuRaPPmfbSV2w" base_Action="_MABzoDMjEeuRaPPmfbSV2w" objectlifecycleBehavior="_BhPSEC2oEeunIrWJiW4dhw">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_NKE34P9mEeu6qp1kpy2XgA" vertex="_-RcZcC2gEeunIrWJiW4dhw"/>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2j1yvEeuGANEPbvMd3Q" vertex="_-pklkC2gEeunIrWJiW4dhw"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_oNFqkDO4EeuRaPPmfbSV2w" base_Action="_kw_vIC3OEeunIrWJiW4dhw" objectlifecycleBehavior="_Fw9v8FS6EeuvSIpoIJb8KA"/>
@@ -622,7 +618,7 @@
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_HqMtAFS7EeuvSIpoIJb8KA" base_Action="_vNVnIC8LEeu38d3zxHUFKw" objectlifecycleBehavior="_RCEKkC3HEeunIrWJiW4dhw"/>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_4B0rUFT5EeuSce0SK5VwvA" base_Action="_YZI2UFRJEeuvSIpoIJb8KA"/>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_YbM7gFT8EeuSce0SK5VwvA" base_Action="_KLsv4FT8EeuSce0SK5VwvA">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEpVyvEeuGANEPbvMd3Q" vertex="_-pklkC2gEeunIrWJiW4dhw"/>
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Xwx10OunEeukSK3JniKtFQ" vertex="_ZtjfYFSoEeuvSIpoIJb8KA"/>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ControlFlowWithConstraint xmi:id="_brPBgFT_EeuawNSxsUN9Qg" base_ControlFlow="_OLZqMFT9EeuSce0SK5VwvA">
     <constraint xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEp1yvEeuGANEPbvMd3Q" vertex="_-pklkC2gEeunIrWJiW4dhw"/>

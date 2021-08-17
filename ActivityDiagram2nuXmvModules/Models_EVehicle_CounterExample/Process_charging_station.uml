@@ -196,7 +196,7 @@
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_u2aHMDMkEeuRaPPmfbSV2w" base_Action="_FOX5oDMjEeuRaPPmfbSV2w">
     <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_BhPSEC2oEeunIrWJiW4dhw"/>
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_K7s70P9mEeu6qp1kpy2XgA">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_TqOVsP9nEeu6qp1kpy2XgA">
       <vertex xmi:type="uml:State" href="OLC_Car.uml#_-RcZcC2gEeunIrWJiW4dhw"/>
     </preCondition>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2iVyvEeuGANEPbvMd3Q">
@@ -205,7 +205,7 @@
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_vtoqIDMkEeuRaPPmfbSV2w" base_Action="_XeYGQDMjEeuRaPPmfbSV2w">
     <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_9cU6EC3GEeunIrWJiW4dhw"/>
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Q31jEP9mEeu6qp1kpy2XgA">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Zi-40P9nEeu6qp1kpy2XgA">
       <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_R19w4C3AEeunIrWJiW4dhw"/>
     </preCondition>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2i1yvEeuGANEPbvMd3Q">
@@ -214,7 +214,7 @@
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_wabesDMkEeuRaPPmfbSV2w" base_Action="_QPrD4DMjEeuRaPPmfbSV2w">
     <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_charging_station.uml#_9cU6EC3GEeunIrWJiW4dhw"/>
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_OpfcMP9mEeu6qp1kpy2XgA">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_X2UisP9nEeu6qp1kpy2XgA">
       <vertex xmi:type="uml:State" href="OLC_charging_station.uml#_R19w4C3AEeunIrWJiW4dhw"/>
     </preCondition>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2jVyvEeuGANEPbvMd3Q">
@@ -223,7 +223,7 @@
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_xRqBoDMkEeuRaPPmfbSV2w" base_Action="_MABzoDMjEeuRaPPmfbSV2w">
     <objectlifecycleBehavior xmi:type="uml:Interaction" href="OLC_Car.uml#_BhPSEC2oEeunIrWJiW4dhw"/>
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_NKE34P9mEeu6qp1kpy2XgA">
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_WSxsUP9nEeu6qp1kpy2XgA">
       <vertex xmi:type="uml:State" href="OLC_Car.uml#_-RcZcC2gEeunIrWJiW4dhw"/>
     </preCondition>
     <postCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0n2j1yvEeuGANEPbvMd3Q">
@@ -317,8 +317,8 @@
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_4B0rUFT5EeuSce0SK5VwvA" base_Action="_YZI2UFRJEeuvSIpoIJb8KA"/>
   <semanticSepcification:ActionWithSemanticSpecification xmi:id="_YbM7gFT8EeuSce0SK5VwvA" base_Action="_KLsv4FT8EeuSce0SK5VwvA">
-    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_m0pEpVyvEeuGANEPbvMd3Q">
-      <vertex xmi:type="uml:State" href="OLC_Car.uml#_-pklkC2gEeunIrWJiW4dhw"/>
+    <preCondition xmi:type="semanticSepcification:ObjectLifeCycleConstraint" xmi:id="_Xwx10OunEeukSK3JniKtFQ">
+      <vertex xmi:type="uml:State" href="OLC_Car.uml#_ZtjfYFSoEeuvSIpoIJb8KA"/>
     </preCondition>
   </semanticSepcification:ActionWithSemanticSpecification>
   <semanticSepcification:ControlFlowWithConstraint xmi:id="_brPBgFT_EeuawNSxsUN9Qg" base_ControlFlow="_OLZqMFT9EeuSce0SK5VwvA">
